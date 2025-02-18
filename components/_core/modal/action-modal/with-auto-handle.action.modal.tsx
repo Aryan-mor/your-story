@@ -1,12 +1,14 @@
 import { cloneElement, Fragment, type JSX } from 'react';
 import { useOpen } from '../../../../utils/use-open';
-import type { UseModalFooterActionsProps } from '../footer.modal.tsx';
+import type { UseModalFooterActionsProps } from '../footer.modal';
 import ActionModal, { type ActionModalProps } from './action.modal';
 
 export type WithAutoHandleActionModalProps = {
   children: JSX.Element;
   skipConfirmation?: undefined | boolean;
-  closeButtonAction?: undefined | UseModalFooterActionsProps['closeButtonAction'];
+  closeButtonAction?:
+    | undefined
+    | UseModalFooterActionsProps['closeButtonAction'];
 } & Omit<ActionModalProps, 'isOpen' | 'onClose' | 'closeButtonAction'>;
 export default function WithAutoHandleActionModal({
   children,

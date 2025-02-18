@@ -4,7 +4,7 @@ import {
 } from '@heroui/react';
 import clsx from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import Avatar, { type AvatarProps } from './avatar.tsx';
+import Avatar, { type AvatarProps } from './avatar';
 
 type AvatarGroupProps = { size: AvatarProps['size'] } & Omit<
   NextUiAvatarGroupProps,

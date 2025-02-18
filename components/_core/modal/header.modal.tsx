@@ -1,9 +1,9 @@
 import { type ModalHeaderProps as NextUiModalHeaderProps } from '@heroui/react';
 import type { ReactNode } from 'react';
-import { tw } from '../../../utils/tw.ts';
-import { type ButtonProps } from '../button/button.tsx';
-import DrawerHeader from '../drawer/header.drawer.tsx';
-import type { ModalProps } from './modal.tsx';
+import { tw } from '../../../utils/tw';
+import { type ButtonProps } from '../button/button';
+import DrawerHeader from '../drawer/header.drawer';
+import type { ModalProps } from './modal';
 
 export type ModalHeaderProps = {
   titleStartContent?: ReactNode | undefined;

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { UseModalFooterActionsProps } from '../footer.modal.tsx';
+import type { UseModalFooterActionsProps } from '../footer.modal';
 import LazyModal from '../lazy.modal';
 import Modal, { type ModalProps } from '../modal';
 
@@ -44,7 +44,8 @@ function ActionModal<OnCloseProps = unknown>({
         secondaryAction,
         leftAction,
         closeButtonAction,
-      }}>
+      }}
+    >
       {children ?? message}
     </Modal>
   );

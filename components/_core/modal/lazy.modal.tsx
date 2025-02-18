@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Fragment } from 'react/jsx-runtime';
-import type { ModalProps } from './modal.tsx';
+import type { ModalProps } from './modal';
 
 export default function LazyModal<
   T extends ModalProps<OnCloseProps>,

@@ -2,7 +2,7 @@ import { isString } from 'radash';
 import { type Dispatch, Fragment, type SetStateAction, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { FilterProps } from '../../filter.type';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import type { FilterStateStore } from '../../use-filter';
 import type {
   CheckboxFilter as CheckboxFilterType,
   CheckboxState,
@@ -49,7 +49,8 @@ export default function CheckboxFilter<
         'flex w-full flex-wrap gap-2 p-1',
         filter.className,
         filter.classNames?.base,
-      )}>
+      )}
+    >
       <span className="font-normal text-gray-700">{filter.label?.()}</span>
       {filter.items.map((checkboxFilterItem) => {
         const onClick = (newValue: boolean) =>

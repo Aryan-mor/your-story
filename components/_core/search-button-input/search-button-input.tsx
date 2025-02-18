@@ -9,7 +9,7 @@ import { useOpen } from '../../../utils/use-open';
 import SearchInput, {
   SearchClearIcon,
   searchIconClassName,
-} from '../_form/input/search.input.tsx';
+} from '../_form/input/search.input';
 import Button, { type ButtonProps } from '../button/button';
 
 type SearchButtonInputProps = {

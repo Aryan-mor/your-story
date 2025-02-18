@@ -27,12 +27,10 @@ import CArray from '../../../utils/cArray.ts';
 import CObject from '../../../utils/cObject.ts';
 import { notEmpty } from '../../../utils/not-empty.ts';
 import useStateWithDefaultHandlerAndStorage from '../../../utils/state/use-state-with-default-handler-and-storage.ts';
-import EmptyBodyPage, {
-  EmptyImage,
-} from '../page/body.page/empty.body.page.tsx';
+import EmptyBodyPage, { EmptyImage } from '../page/body.page/empty.body.page';
 import TopContentTable, {
   type TopContentTableProps,
-} from './modules/top-content.table/top-content.table.tsx';
+} from './modules/top-content.table/top-content.table';
 import Table from './table';
 
 type WizardTableHeader<HEADER extends string, KEY extends Key = ''> = {

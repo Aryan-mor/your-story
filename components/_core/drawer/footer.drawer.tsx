@@ -6,7 +6,7 @@ import { tw } from '../../../utils/tw.ts';
 import {
   useModalFooterActions,
   type UseModalFooterActionsProps,
-} from '../modal/footer.modal.tsx';
+} from '../modal/footer.modal';
 
 export type DrawerFooterProps = {
   classNames?:

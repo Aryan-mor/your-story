@@ -5,8 +5,8 @@ import {
   DropdownTrigger,
 } from '@heroui/react';
 import { EllipsisVertical } from 'lucide-react';
-import Button from '../../button/button.tsx';
-import type { DropdownItemProps } from '../../dropdown/dropdown.tsx';
+import Button from '../../button/button';
+import type { DropdownItemProps } from '../../dropdown/dropdown';
 
 type TableActionItem<KEYS extends string> = DropdownItemProps<KEYS> & {
   key: string;

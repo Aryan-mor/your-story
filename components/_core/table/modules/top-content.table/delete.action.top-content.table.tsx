@@ -1,6 +1,6 @@
 import { type TFunction } from 'i18next';
 import { Trash } from 'lucide-react';
-import type { ButtonProps, ButtonPropsWithKey } from '../../../button/button.tsx';
+import type { ButtonProps, ButtonPropsWithKey } from '../../../button/button';
 
 export default function DeleteActionTopContentTable({
   count,

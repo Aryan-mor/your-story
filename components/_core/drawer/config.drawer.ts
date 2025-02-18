@@ -1,5 +1,5 @@
-import type { HeaderSize } from '../page/header.page/header.page.tsx';
-import type { BaseDrawerProps } from './base.drawer.tsx';
+import type { HeaderSize } from '../page/header.page/header.page';
+import type { BaseDrawerProps } from './base.drawer';
 
 export const drawerHeaderMinHeight: Record<
   HeaderSize,

@@ -11,15 +11,15 @@ import {
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import CArray from '../../../../../utils/cArray.ts';
-import SearchInput from '../../../_form/input/search.input.tsx';
-import Button, { type ButtonPropsWithKey } from '../../../button/button.tsx';
+import SearchInput from '../../../_form/input/search.input';
+import Button, { type ButtonPropsWithKey } from '../../../button/button';
 import SelectDropdown, {
   type SelectDropdownProps,
-} from '../../../dropdown/select.dropdown.tsx';
+} from '../../../dropdown/select.dropdown';
 import type {
   WizardTableCustomize,
   WizardTableHeaderType,
-} from '../../wizard.table.tsx';
+} from '../../wizard.table';
 
 export type TopContentTableProps<
   HEADER extends string,

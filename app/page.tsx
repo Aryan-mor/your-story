@@ -7,7 +7,7 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/panel');
+    router.push('/admin');
   }, [router]);
 
   return (

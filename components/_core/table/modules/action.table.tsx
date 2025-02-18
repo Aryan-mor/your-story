@@ -1,5 +1,5 @@
 import { tw } from '../../../../utils/tw.ts';
-import Button, { type ButtonProps } from '../../button/button.tsx';
+import Button, { type ButtonProps } from '../../button/button';
 
 export default function ActionTable({ className, ...props }: ButtonProps) {
   return (

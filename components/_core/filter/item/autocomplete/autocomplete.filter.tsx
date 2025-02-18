@@ -3,7 +3,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Autocomplete from '../../../_form/autocomplete/autocomplete';
 import type { FilterProps } from '../../filter.type';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import type { FilterStateStore } from '../../use-filter';
 import type {
   AutocompleteFilter as AutocompleteFilterType,
   AutocompleteState,

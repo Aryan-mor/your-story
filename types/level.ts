@@ -7,8 +7,8 @@ type LevelId = Uuid & {
 type Level = {
   id: LevelId;
   title: string;
-  image: string;
-  transitionAnimation: string;
+  image: Image;
+  transitionAnimation: Video;
   clickableZone: ClickableZone[];
 };
 export default Level;

@@ -6,7 +6,7 @@ import { CircleX } from 'lucide-react';
 import { forwardRef, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
-import Button from '../../button/button.tsx';
+import Button from '../../button/button';
 
 type DatePickerProps = NextUiDatePickerProps & {
   showOptionLabel?: boolean;

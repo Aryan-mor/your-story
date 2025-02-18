@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import Dropdown, {
   type DropdownItemProps,
   type DropdownProps,
-} from './dropdown.tsx';
+} from './dropdown';
 
 export type SelectDropdownProps<KEYS extends string> = {
   selectedKeys: KEYS[];

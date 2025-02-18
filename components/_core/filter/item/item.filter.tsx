@@ -1,13 +1,16 @@
 import { type Dispatch, type SetStateAction, useMemo } from 'react';
 import type { Filter as FilterItemType, FilterState } from '../filter.type';
-import type { FilterStateStore } from '../use-filter.tsx';
+import type { FilterStateStore } from '../use-filter';
 import AutocompleteFilter from './autocomplete/autocomplete.filter';
 import {
   isAutocompleteFilter,
   isAutocompleteState,
 } from './autocomplete/autocomplete.filter.type';
 import CheckboxFilter from './checkbox/checkbox.filter';
-import { isCheckboxFilter, isCheckboxState } from './checkbox/checkbox.filter.type';
+import {
+  isCheckboxFilter,
+  isCheckboxState,
+} from './checkbox/checkbox.filter.type';
 import NestedFilter from './nested/nested.filter';
 import { isNestedFilter, isNestedState } from './nested/nested.filter.type';
 import PopupFilter from './popup/popup.filter';

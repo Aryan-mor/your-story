@@ -6,13 +6,13 @@ import {
 } from '@heroui/react';
 import { Fragment, type ReactNode, useCallback } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { HardPartial } from '../../../interfaces/core/hard-partial.ts';
-import { tw } from '../../../utils/tw.ts';
-import type { DrawerFooterProps } from '../drawer/footer.drawer.tsx';
-import { type DrawerHeaderProps } from '../drawer/header.drawer.tsx';
+import { tw } from '../../../utils/tw';
+import type { DrawerFooterProps } from '../drawer/footer.drawer';
+import { type DrawerHeaderProps } from '../drawer/header.drawer';
 import BaseModal from './base.modal';
-import ModalFooter, { type ModalFooterProps } from './footer.modal.tsx';
-import ModalHeader from './header.modal.tsx';
+import ModalFooter, { type ModalFooterProps } from './footer.modal';
+import ModalHeader from './header.modal';
+import { HardPartial } from '@/utils/hard-partial';
 
 type BaseModalProps = Omit<
   NextUiModalProps,

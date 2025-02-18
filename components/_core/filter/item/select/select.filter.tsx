@@ -4,7 +4,7 @@ import { type Dispatch, type SetStateAction, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Select from '../../../_form/select/select';
 import type { FilterProps } from '../../filter.type';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import type { FilterStateStore } from '../../use-filter';
 import type {
   SelectFilter as SelectFilterType,
   SelectState,

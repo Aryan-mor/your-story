@@ -13,6 +13,9 @@ module.exports = {
         sans: ["var(--font-sans)"],
         mono: ["var(--font-mono)"],
       },
+      aspect: {
+        '9/16': '9 / 16',
+      }
     },
   },
   darkMode: "class",

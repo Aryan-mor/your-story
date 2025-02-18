@@ -3,7 +3,7 @@ import ButtonLink from '@/components/_core/button-link/button-link';
 import Button from '@/components/_core/button/button';
 import Card from '@/components/_core/card/card';
 import useModal from '@/components/_core/modal/use.modal';
-import CreateStoryModal from '@/components/stories/create.modal.story';
+import CreateStoryModal from '@/components/admin/stories/create.modal.story';
 import { useStories } from '@/req/use-stories';
 import CArray from '@/utils/cArray';
 import { CardBody, CardHeader } from '@heroui/react';
@@ -40,7 +40,7 @@ export default function PanelPage() {
             <CardHeader>
               <ButtonLink
                 className="font-bold text-2xl w-full"
-                onPress={() => router.push('/panel/stories/edit/' + story.id)}
+                onPress={() => router.push('/admin/stories/edit/' + story.id)}
               >
                 {index + 1}. {story.title}
               </ButtonLink>

@@ -2,7 +2,7 @@ import { Search, X } from 'lucide-react';
 import { forwardRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
-import Input, { type InputProps } from './input.tsx';
+import Input, { type InputProps } from './input';
 
 const SearchInput = forwardRef<HTMLInputElement | null, InputProps>(
   ({ classNames, ...props }, ref) => {

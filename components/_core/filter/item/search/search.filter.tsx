@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import { type Dispatch, type SetStateAction, useCallback } from 'react';
 import { twMerge } from 'tailwind-merge';
-import SearchInput from '../../../_form/input/search.input.tsx';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import SearchInput from '../../../_form/input/search.input';
+import type { FilterStateStore } from '../../use-filter';
 import type {
   SearchFilter as SearchFilterType,
   SearchState,

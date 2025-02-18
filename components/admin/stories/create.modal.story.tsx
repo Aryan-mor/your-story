@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form';
-import ActionModal, {
-  ActionModalProps,
-} from '../_core/modal/action-modal/action.modal';
-import Input from '../_core/_form/input/input';
 import { useCallback } from 'react';
 import { useUpdateStory } from '@/req/use-stories';
 import useLoading from '@/utils/use-loading';
 import { useRouter } from 'next/navigation';
+import ActionModal, {
+  ActionModalProps,
+} from '@/components/_core/modal/action-modal/action.modal';
+import Input from '@/components/_core/_form/input/input';
 
 type CreateStoryModalProps = Omit<
   ActionModalProps,
@@ -35,18 +35,17 @@ export default function CreateStoryModal(props: CreateStoryModalProps) {
         },
       );
     },
-    [onLoadingFinished, onLoadingStart, updateStory],
+    [onLoadingFinished, onLoadingStart, props, router, updateStory],
   );
 
   return (
     <ActionModal
       title="Create Story"
       {...props}
-      isLoading={isLoading}
       primaryAction={{
         children: 'Create Story',
         isLoading: isLoading,
-        onPress: handleSubmit(handleSubmitClicked),
+        onPress: () => handleSubmit(handleSubmitClicked)(),
       }}
     >
       <Input label="Title" {...register('title')} />

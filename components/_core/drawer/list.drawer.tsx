@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
 import CArray from '../../../utils/cArray.ts';
 import { tw } from '../../../utils/tw.ts';
-import NoResult from '../../no-result.tsx';
-import Drawer, { type DrawerProps } from './drawer.tsx';
+import NoResult from '../../no-result';
+import Drawer, { type DrawerProps } from './drawer';
 
 export type ListDrawerProps<ITEM> = {
   list: undefined | ITEM[];
@@ -48,7 +48,8 @@ export default function ListDrawer<ITEM>({
                 hidden: CArray.isEmpty(list) && isLoading,
               },
               classNames?.results,
-            )}>
+            )}
+          >
             {list?.length ?? 0} {t('Results')} {resultSuffix}
           </div>
           <div className="flex flex-wrap space-y-3">

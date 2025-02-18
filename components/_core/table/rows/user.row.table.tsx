@@ -1,4 +1,4 @@
-import UserBadge, { type UserBadgeProps } from '../../user/badge.user.tsx';
+import UserBadge, { type UserBadgeProps } from '../../user/badge.user';
 
 export default function UserRowTable({
   user,

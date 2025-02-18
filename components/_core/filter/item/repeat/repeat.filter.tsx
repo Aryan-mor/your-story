@@ -4,7 +4,7 @@ import { type Dispatch, type SetStateAction, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Button from '../../../button/button';
 import type { FilterProps, FilterState } from '../../filter.type';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import type { FilterStateStore } from '../../use-filter';
 import ItemFilter from '../item.filter';
 import {
   getInitialItem,
@@ -44,16 +44,17 @@ export default function RepeatFilter<
           <ItemFilter
             filter={filter.filter}
             state={repeatAcceptableState}
-            onStateChange={(newState: SetStateAction<Record<string, FilterState>>) =>
-              handleChange(filterItem.key, index, newState)
-            }
+            onStateChange={(
+              newState: SetStateAction<Record<string, FilterState>>,
+            ) => handleChange(filterItem.key, index, newState)}
           />
           <Button
             isIconOnly
             color="default"
             size="sm"
             variant="light"
-            onPress={() => handleChange(filterItem.key, index, null)}>
+            onPress={() => handleChange(filterItem.key, index, null)}
+          >
             <Trash size={18} />
           </Button>
         </div>
@@ -69,7 +70,8 @@ export default function RepeatFilter<
             },
             true,
           )
-        }>
+        }
+      >
         <Plus className="mr-1" size={16} />
         {filter.label?.() ?? t('Add filter')}
       </span>

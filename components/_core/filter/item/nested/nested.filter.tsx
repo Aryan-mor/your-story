@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 import type { FilterProps } from '../../filter.type';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import type { FilterStateStore } from '../../use-filter';
 import ItemFilter from '../item.filter';
 import type {
   NestedFilter as NestedFilterType,

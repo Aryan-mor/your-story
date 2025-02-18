@@ -1,6 +1,6 @@
 import ProgressWithPercentageModule, {
   type ProgressWithPercentageModuleProps,
-} from '../../_modules/progress-with-percentage.module.tsx';
+} from '../../_modules/progress-with-percentage.module';
 
 export default function ProgressWithPercentageRowTable({
   percentage,
@@ -9,7 +9,10 @@ export default function ProgressWithPercentageRowTable({
   return {
     value: percentage,
     children: (
-      <ProgressWithPercentageModule percentage={percentage} showDash={showDash} />
+      <ProgressWithPercentageModule
+        percentage={percentage}
+        showDash={showDash}
+      />
     ),
   };
 }

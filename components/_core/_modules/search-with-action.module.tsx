@@ -3,9 +3,9 @@ import { Plus } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { useOpen } from '../../../utils/use-open.ts';
-import { searchIconClassName } from '../_form/input/search.input.tsx';
-import Button, { type ButtonProps } from '../button/button.tsx';
-import SearchButtonInput from '../search-button-input/search-button-input.tsx';
+import { searchIconClassName } from '../_form/input/search.input';
+import Button, { type ButtonProps } from '../button/button';
+import SearchButtonInput from '../search-button-input/search-button-input';
 
 export type SearchWithActionModuleProps = {
   actionButton: undefined | ButtonProps;
@@ -47,7 +47,8 @@ export default function SearchWithActionModule({
               'w-[45px] gap-0 !px-0': isSearchShow,
             }),
             actionButton.className,
-          )}>
+          )}
+        >
           <span
             className={clsx(
               'overflow-hidden transition-opacity delay-100 duration-1000',
@@ -55,7 +56,8 @@ export default function SearchWithActionModule({
                 'w-0 opacity-0': isSearchShow,
                 'opacity-100': !isSearchShow,
               },
-            )}>
+            )}
+          >
             {actionButton.children}
           </span>
         </Button>

@@ -6,8 +6,8 @@ import { Pencil, X } from 'lucide-react';
 import { isString } from 'radash';
 import type { ReactNode } from 'react';
 import { tw } from '../../../utils/tw.ts';
-import Button, { type ButtonProps } from '../button/button.tsx';
-import type { DrawerProps } from './drawer.tsx';
+import Button, { type ButtonProps } from '../button/button';
+import type { DrawerProps } from './drawer';
 
 export type DrawerHeaderProps = {
   titleStartContent?: ReactNode | undefined;

@@ -83,7 +83,7 @@ export const useModalFooterActions = ({
   return (
     <Fragment>
       <div>{leftAction && <Button {...leftAction} />}</div>
-      <div className="flex flex-row-reverse gap-aos-g-md">
+      <div className="flex flex-row-reverse gap-2">
         {buttonList.map((action) => (
           <Button key={action.key} {...action} />
         ))}

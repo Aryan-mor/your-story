@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import Alert, { Severity } from '../../alert/alert.tsx';
+import Alert, { Severity } from '../../alert/alert';
 import ActionModal, { type ActionModalProps } from './action.modal';
 
 type DeleteActionModalProps = {
@@ -26,12 +26,16 @@ export default function DeleteActionModal({
         variant: 'bordered',
         children: t('Cancel'),
         ...props.closeButtonAction,
-      }}>
+      }}
+    >
       {children ??
         message ??
         t('Are you sure you want to delete this? This cannot be undone.')}
       {showCannotBeUndoneAlert && (
-        <Alert severity={Severity.Warning} title={t('This cannot be undone.')} />
+        <Alert
+          severity={Severity.Warning}
+          title={t('This cannot be undone.')}
+        />
       )}
     </ActionModal>
   );

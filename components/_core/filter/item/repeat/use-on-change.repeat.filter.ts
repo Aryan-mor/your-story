@@ -1,7 +1,7 @@
 import { clone, isFunction } from 'radash';
 import { type SetStateAction, useCallback } from 'react';
 import { type FilterState, FilterType } from '../../filter.type';
-import type { FilterStateStore } from '../../use-filter.tsx';
+import type { FilterStateStore } from '../../use-filter';
 import { type RepeatFilterProps } from './repeat.filter';
 import {
   getInitialItem,

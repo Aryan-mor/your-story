@@ -1,6 +1,6 @@
 import { type FC, Fragment, useCallback, useState } from 'react';
 import type { HardPartial } from '../../../interfaces/core/hard-partial.ts';
-import type { DrawerProps } from './drawer.tsx';
+import type { DrawerProps } from './drawer';
 
 export default function useDrawer<T extends DrawerProps>(Drawer: FC<T>) {
   const [state, setState] = useState<Omit<

@@ -8,7 +8,7 @@ import {
   useRef,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { NotificationType } from '../notification/notifications.tsx';
+import { NotificationType } from '../notification/notifications';
 
 export default function ErrorBoundary({
   children,
@@ -18,7 +18,11 @@ export default function ErrorBoundary({
   children: ReactNode;
   maxErrorRetries?: number | undefined;
   onError?:
-    | ((error: unknown, componentStack: string | undefined, eventId: string) => void)
+    | ((
+        error: unknown,
+        componentStack: string | undefined,
+        eventId: string,
+      ) => void)
     | undefined;
 }) {
   const lastErrors = useRef<Record<string, number>>({});
@@ -31,7 +35,8 @@ export default function ErrorBoundary({
           maxErrorRetries={maxErrorRetries}
           {...props}
         />
-      )}>
+      )}
+    >
       {children}
     </SentryErrorBoundary>
   );
