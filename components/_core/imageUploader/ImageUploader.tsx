@@ -8,6 +8,7 @@ import { useOpen } from '@/utils/use-open';
 import { tw } from '@/utils/tw';
 
 export default function ImageUploader({
+  scope,
   label,
   image,
   isDisabled,
@@ -18,7 +19,7 @@ export default function ImageUploader({
   label?: undefined | string;
   image: undefined | Image;
 } & Pick<ImageProps, 'classNames'> &
-  Pick<ImageUploaderModalProps, 'onImageChange'>) {
+  Pick<ImageUploaderModalProps, 'onImageChange' | 'scope'>) {
   const { isOpen, onOpen, onClose } = useOpen();
 
   return (
@@ -35,6 +36,7 @@ export default function ImageUploader({
         onClick={!isDisabled ? onOpen : undefined}
       />
       <ImageUploaderModal
+        scope={scope}
         isOpen={isOpen}
         onImageChange={(image) => {
           onImageChange(image);

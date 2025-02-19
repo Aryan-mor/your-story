@@ -2,12 +2,16 @@
 import useParams from '@/components/_core/_use/use-params/use-params';
 import { useStory, useUpdateStory } from '@/req/use-stories';
 import { useForm } from 'react-hook-form';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import Input from '@/components/_core/_form/input/input';
 import ImageUploader from '@/components/_core/imageUploader/ImageUploader';
 import Button from '@/components/_core/button/button';
 import { useRouter } from 'next/navigation';
 import useLoading from '@/utils/use-loading';
+import PreviewLevelForm from '@/components/admin/level/preview.form.level';
+import { Plus } from 'lucide-react';
+import useDrawer from '@/components/_core/drawer/use.drawer';
+import LevelFormDrawer from '@/components/admin/level/form.level.drawer';
 
 type FormData = Pick<Story, 'title' | 'description' | 'thumbnail'>;
 export default function UploadForm() {
@@ -20,11 +24,16 @@ export default function UploadForm() {
   const { register, handleSubmit, setValue, watch, reset } =
     useForm<FormData>();
   const { isLoading, onLoadingStart, onLoadingFinished } = useLoading();
+  const isFormInit = useRef(false);
+  const {
+    renderDrawer: renderLevelFormDrawer,
+    handleOpenDrawer: handleOpenLevelFormDrawer,
+  } = useDrawer(LevelFormDrawer);
 
   const thumbnail = watch('thumbnail');
-
   useEffect(() => {
-    if (!story) return;
+    if (!story || isFormInit.current) return;
+    isFormInit.current = true;
     reset(story);
   }, [reset, story]);
 
@@ -34,13 +43,17 @@ export default function UploadForm() {
 
   const onSubmit = useCallback(
     (form: FormData) => {
+      onLoadingStart();
       updateStory.mutate(form, {
         onSuccess: () => {
           onDone();
         },
+        onSettled: () => {
+          onLoadingFinished();
+        },
       });
     },
-    [onDone, updateStory],
+    [onDone, onLoadingFinished, onLoadingStart, updateStory],
   );
 
   return (
@@ -58,6 +71,7 @@ export default function UploadForm() {
         {...register('description')}
       />
       <ImageUploader
+        scope={storyId}
         label="Thumbnail"
         isDisabled={isLoading}
         image={thumbnail}
@@ -66,6 +80,16 @@ export default function UploadForm() {
         }}
         onImageChange={(image) => setValue('thumbnail', image)}
       />
+      {story?.levels.map((levelId) => <PreviewLevelForm key={levelId} />)}
+      <div className="w-full flex justify-start">
+        <Button
+          color="primary"
+          startContent={<Plus />}
+          onPress={() => handleOpenLevelFormDrawer({ levelId: undefined })}
+        >
+          Add new level
+        </Button>
+      </div>
       <div className="flex w-full gap-3 justify-end bg-gray-100 p-2 rounded-md">
         <Button isDisabled={isLoading} onPress={onDone}>
           Close
@@ -79,6 +103,7 @@ export default function UploadForm() {
           Save
         </Button>
       </div>
+      {renderLevelFormDrawer}
     </form>
   );
 }
