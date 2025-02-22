@@ -8,14 +8,16 @@ type Story = {
   id: StoryId;
   title: string;
   description: string;
-  thumbnail: Image;
-  startLevelId: Level['id'];
+  thumbnail: null | Image;
+  startLevelId: null | Level['id'];
   levels: Level['id'][];
 };
 
 export const defaultStory: Partial<Story> = {
   title: '',
   description: '',
+  thumbnail: null,
+  startLevelId: null,
   levels: [],
 };
 

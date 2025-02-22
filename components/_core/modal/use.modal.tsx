@@ -24,9 +24,7 @@ export default function useModal<T extends ModalProps>(Modal: FC<T>) {
 
   return {
     renderModal: (
-      <Modal {...safeState} isOpen={isOpen} onClose={handleCloseModal}>
-        <Fragment />
-      </Modal>
+      <Modal {...safeState} isOpen={isOpen} onClose={handleCloseModal} />
     ),
     handleOpenModal,
     isOpen,

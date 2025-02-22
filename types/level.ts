@@ -7,8 +7,15 @@ type LevelId = Uuid & {
 type Level = {
   id: LevelId;
   title: string;
-  image: Image;
-  transitionAnimation: Video;
+  image: null | Image;
+  transitionAnimation: null | Video;
   clickableZone: ClickableZone[];
 };
 export default Level;
+
+export const defaultLevel: Partial<Level> = {
+  title: '',
+  clickableZone: [],
+  image: null,
+  transitionAnimation: null,
+};

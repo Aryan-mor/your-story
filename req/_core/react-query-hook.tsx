@@ -17,7 +17,7 @@ type HOOK<
 > = (
   params?: HOOK_PARAMS,
   options?: HOOK_OPTIONS,
-) => UseQueryResult<RESULT_ITEM[]>;
+) => Pick<UseQueryResult<RESULT_ITEM[]>, 'data' | 'isLoading'>;
 
 const useObjectify = <
   HOOK_PARAMS,

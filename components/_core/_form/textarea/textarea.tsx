@@ -39,11 +39,13 @@ const Textarea = forwardRef<HTMLTextAreaElement | null, TextAreaProps>(
           variant={variant}
           radius={radius}
           isInvalid={isInvalid}
+          labelPlacement="outside"
           errorMessage={errorMessage}
           placeholder={placeholder}
           classNames={{
             ...classNames,
             inputWrapper: twMerge('shadow-none', classNames?.mainWrapper),
+            label: twMerge('text-sm font-semibold w-fit', classNames?.label),
           }}
         />
         {props?.maxLength && valueForCheck !== undefined && (

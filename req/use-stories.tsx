@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import ReactQueryHook from './_core/react-query-hook';
 import { pushErrorNotification } from './_core/error.ai';
 import { defaultStory } from '@/types/story';
+import { useCallback } from 'react';
 
 const StoriesKey = 'stories';
 const useStoriesQuery = () => {
@@ -16,7 +17,7 @@ const useStoriesQuery = () => {
 };
 
 export const useUpdateStory = () => {
-  const queryClient = useQueryClient();
+  const refchStories = useRefchStories();
   const { data: stories } = useObjectifyStories();
 
   return useMutation({
@@ -37,12 +38,19 @@ export const useUpdateStory = () => {
       });
     },
     onSuccess: (res) => {
-      queryClient.invalidateQueries({ queryKey: [StoriesKey] });
+      refchStories();
       return res;
     },
     onError: pushErrorNotification,
   });
 };
+
+export function useRefchStories() {
+  const queryClient = useQueryClient();
+  return useCallback(() => {
+    queryClient.invalidateQueries({ queryKey: [StoriesKey] });
+  }, [queryClient]);
+}
 
 export const {
   use: useStories,

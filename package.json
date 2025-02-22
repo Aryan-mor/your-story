@@ -14,12 +14,14 @@
     "@react-aria/ssr": "3.9.7",
     "@react-aria/visually-hidden": "3.8.18",
     "@tanstack/react-query": "^5.66.3",
+    "canvas": "^3.0.0-rc3",
     "cloudinary": "^2.5.1",
     "clsx": "2.1.1",
     "eslint-define-config": "^2.1.0",
     "framer-motion": "11.13.1",
     "fs": "^0.0.1-security",
     "intl-messageformat": "^10.5.0",
+    "konva": "^9.3.18",
     "lucide-react": "^0.475.0",
     "next": "15.0.4",
     "next-themes": "^0.4.4",
@@ -27,7 +29,9 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.54.2",
-    "react-i18next": "^15.4.0"
+    "react-i18next": "^15.4.0",
+    "react-konva": "^19.0.3",
+    "use-image": "^1.1.1"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.6",

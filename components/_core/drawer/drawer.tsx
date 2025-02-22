@@ -17,8 +17,8 @@ export type DrawerProps = {
   onClose: () => void;
 } & Omit<BaseDrawerProps, 'title' | 'children' | 'isOpen' | 'onClose'>;
 
-export const drawerBodyPx = 'p-aos-3xl';
-export const drawerBodyGap = 'gap-aos-g-lg';
+export const drawerBodyPx = 'p-6';
+export const drawerBodyGap = 'gap-4';
 export default function Drawer({
   title,
   header,
@@ -42,7 +42,7 @@ export default function Drawer({
       {...props}
       classNames={{
         ...classNames,
-        body: tw('p-0', drawerBodyGap, drawerBodyPx, classNames?.body), //I add p-0 to pass library padding
+        body: tw(drawerBodyGap, drawerBodyPx, classNames?.body),
       }}
     >
       <DrawerContent>

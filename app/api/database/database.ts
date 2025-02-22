@@ -36,7 +36,7 @@ export default class Database {
 
   static async upsertItem<
     T extends { id?: undefined | Uuid } & Record<any, any>,
-  >(dataType: DataType, item: T): Promise<boolean> {
+  >(dataType: DataType, item: T): Promise<false | T> {
     try {
       const data = (await this.readData<T[]>(dataType)) || [];
       const safeItem: T = {
@@ -51,7 +51,9 @@ export default class Database {
       } else {
         data.push(safeItem); // Create new item
       }
-      return await this.writeData(dataType, data);
+      const res = await this.writeData(dataType, data);
+      if (res) return safeItem;
+      return false;
     } catch (error) {
       console.error(`Error upserting item in ${dataType} data:`, error);
       return false;

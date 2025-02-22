@@ -10,14 +10,16 @@ import { useRouter } from 'next/navigation';
 import useLoading from '@/utils/use-loading';
 import PreviewLevelForm from '@/components/admin/level/preview.form.level';
 import { Plus } from 'lucide-react';
-import useDrawer from '@/components/_core/drawer/use.drawer';
-import LevelFormDrawer from '@/components/admin/level/form.level.drawer';
+import CreateLevelModal from '@/components/admin/level/create.level.modal';
+import useModal from '@/components/_core/modal/use.modal';
+import { Spinner } from '@heroui/react';
+import Textarea from '@/components/_core/_form/textarea/textarea';
 
 type FormData = Pick<Story, 'title' | 'description' | 'thumbnail'>;
 export default function UploadForm() {
   const router = useRouter();
   const { storyId } = useParams();
-  const { data: story } = useStory({
+  const { data: story, isLoading: isStoryLoading } = useStory({
     id: storyId,
   });
   const updateStory = useUpdateStory();
@@ -26,15 +28,15 @@ export default function UploadForm() {
   const { isLoading, onLoadingStart, onLoadingFinished } = useLoading();
   const isFormInit = useRef(false);
   const {
-    renderDrawer: renderLevelFormDrawer,
-    handleOpenDrawer: handleOpenLevelFormDrawer,
-  } = useDrawer(LevelFormDrawer);
+    renderModal: renderLevelFormDrawer,
+    handleOpenModal: handleOpenLevelFormDrawer,
+  } = useModal(CreateLevelModal);
 
   const thumbnail = watch('thumbnail');
   useEffect(() => {
     if (!story || isFormInit.current) return;
     isFormInit.current = true;
-    reset(story);
+    reset({ ...story });
   }, [reset, story]);
 
   const onDone = useCallback(() => {
@@ -56,52 +58,59 @@ export default function UploadForm() {
     [onDone, onLoadingFinished, onLoadingStart, updateStory],
   );
 
+  if (isStoryLoading || !story) return <Spinner />;
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-wrap gap-5">
-      <Input
-        isDisabled={isLoading}
-        label="Title"
-        className="w-1/3"
-        {...register('title')}
-      />
-      <Input
-        isDisabled={isLoading}
-        label="Description"
-        className="w-1/3"
-        {...register('description')}
-      />
-      <ImageUploader
-        scope={storyId}
-        label="Thumbnail"
-        isDisabled={isLoading}
-        image={thumbnail}
-        classNames={{
-          wrapper: 'w-[150px]',
-        }}
-        onImageChange={(image) => setValue('thumbnail', image)}
-      />
-      {story?.levels.map((levelId) => <PreviewLevelForm key={levelId} />)}
+    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-3 gap-5">
+      <div className="col-span-2 flex flex-wrap gap-5">
+        <Input isDisabled={isLoading} label="Title" {...register('title')} />
+        <Textarea
+          isDisabled={isLoading}
+          label="Description"
+          {...register('description')}
+        />
+      </div>
+      <div className="flex justify-center">
+        <ImageUploader
+          scope={storyId}
+          label="Thumbnail"
+          isDisabled={isLoading}
+          image={thumbnail}
+          classNames={{
+            wrapper: 'w-[150px]',
+          }}
+          onImageChange={(image) => setValue('thumbnail', image)}
+        />
+      </div>
+      <div className="grid grid-cols-2 col-span-3 pt-5 gap-4">
+        {story?.levels.map((levelId) => (
+          <PreviewLevelForm key={levelId} storyId={storyId} levelId={levelId} />
+        ))}
+      </div>
       <div className="w-full flex justify-start">
         <Button
           color="primary"
+          isDisabled={isLoading}
           startContent={<Plus />}
-          onPress={() => handleOpenLevelFormDrawer({ levelId: undefined })}
+          onPress={() => handleOpenLevelFormDrawer({ storyId })}
         >
           Add new level
         </Button>
       </div>
-      <div className="flex w-full gap-3 justify-end bg-gray-100 p-2 rounded-md">
-        <Button isDisabled={isLoading} onPress={onDone}>
-          Close
-        </Button>
-        <Button
-          isLoading={isLoading}
-          variant="solid"
-          color="primary"
-          onPress={() => handleSubmit(onSubmit)()}
-        >
-          Save
-        </Button>
+      <span className="h-16" />
+      <div className="z-30 h-16 items-center fixed bottom-0 w-full left-0 flex justify-center bg-gray-100/60 backdrop-blur-sm p-2 rounded-md">
+        <div className="container flex gap-3 justify-end">
+          <Button isDisabled={isLoading} onPress={onDone}>
+            Close
+          </Button>
+          <Button
+            isLoading={isLoading}
+            variant="solid"
+            color="primary"
+            onPress={() => handleSubmit(onSubmit)()}
+          >
+            Save
+          </Button>
+        </div>
       </div>
       {renderLevelFormDrawer}
     </form>

@@ -1,26 +1,85 @@
-import Database, { DataType } from '@/app/api/database/database';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { pushErrorNotification } from './_core/error.ai';
 import ReactQueryHook from './_core/react-query-hook';
+import { pushErrorNotification } from './_core/error.ai';
+import { defaultLevel } from '@/types/level';
+import { useRefchStories } from './use-stories';
 
-const LevelsKey = DataType.Levels;
-const useLevelsQuery = () => {
+const LevelsKey = 'levels';
+const useLevelsQuery = (
+  params: { storyId: undefined | Story['id'] } | undefined,
+) => {
+  console.log('askfjkjaskfaf first', params?.storyId);
   return useQuery({
-    queryKey: [LevelsKey],
+    queryKey: [LevelsKey, params?.storyId],
     queryFn: () => {
-      return Database.readData<Level[]>(LevelsKey).then((data) => data ?? []);
+      return fetch(`/api/levels/${params?.storyId}`)
+        .then((res) => res.json())
+        .then((data) => (data ?? []) as Level[]);
     },
+    enabled: !!params?.storyId,
   });
 };
 
-export const useUpdateLevel = () => {
+export const useUpdateLevel = (params: {
+  storyId: undefined | Story['id'];
+}) => {
   const queryClient = useQueryClient();
+  const { data: levels } = useObjectifyLevels({ storyId: params?.storyId });
+
+  const refchStories = useRefchStories();
+
   return useMutation({
-    mutationFn: (level: Level) => {
-      return Database.upsertItem(LevelsKey, level);
+    mutationFn: (level: Partial<Level>) => {
+      const baseLevel =
+        (level?.id ? levels?.[level.id] : undefined) ?? defaultLevel;
+      const saveLevel: Partial<Level> = {
+        ...baseLevel,
+        ...level,
+      };
+      return fetch(`/api/levels/${params?.storyId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(saveLevel),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          return { story: res.story } as { story: Story };
+        });
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [LevelsKey] });
+    onSuccess: (res: { story: Story }) => {
+      console.log('askfjkjaskfaf', res.story.id);
+
+      queryClient.invalidateQueries({ queryKey: [LevelsKey, res.story.id] });
+      refchStories();
+      return res;
+    },
+    onError: pushErrorNotification,
+  });
+};
+
+export const useRemoveLevel = (params: {
+  storyId: undefined | Story['id'];
+}) => {
+  const queryClient = useQueryClient();
+  const refchStories = useRefchStories();
+
+  return useMutation({
+    mutationFn: (levelId: Level['id']) => {
+      return fetch(`/api/levels/${params?.storyId}/${levelId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    },
+    onSuccess: (res, levelId) => {
+      queryClient.invalidateQueries({ queryKey: [LevelsKey, levelId] });
+      refchStories();
+      return res;
     },
     onError: pushErrorNotification,
   });

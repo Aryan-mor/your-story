@@ -12,4 +12,11 @@ type ClickableZone = {
   options: ClickableZoneOption[];
 };
 
+export const defaultClickableZone: Omit<ClickableZone, 'id'> = {
+  x: 5,
+  y: 5,
+  radius: 50,
+  options: [],
+};
+
 export default ClickableZone;
