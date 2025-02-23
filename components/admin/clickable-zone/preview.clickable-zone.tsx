@@ -1,8 +1,11 @@
+import useDrawer from '@/components/_core/drawer/use.drawer';
 import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader';
-import { useClicableZone as useClickableZone } from '@/req/use-clickable-zone';
 import { useLevel } from '@/req/use-levels';
-import { Layer, Stage, Image, Circle } from 'react-konva';
+import { Layer, Stage, Image } from 'react-konva';
 import useImage from 'use-image';
+import addEditClickableZoneDrawer from './add-edit.clickable-zone.drawer';
+import { useClicableZones } from '@/req/use-clickable-zone';
+import Circle from '@/components/_core/konva/circle';
 
 type ClickableZonePreviewProps = {
   storyId: undefined | Story['id'];
@@ -10,39 +13,60 @@ type ClickableZonePreviewProps = {
   clickableZoneId: undefined | ClickableZone['id'];
 };
 
-const imageWidth = 900 / 5;
-const imageHeight = 1600 / 5;
+const originalWidth = 900;
+const originalHeight = 1600;
+
+const displayWidth = originalWidth / 5;
+const displayHeight = originalHeight / 5;
 
 export default function ClickableZonePreview({
   levelId,
   clickableZoneId,
   storyId,
 }: ClickableZonePreviewProps) {
-  const { data: level } = useLevel({
-    storyId,
-    id: levelId,
-  });
-  const { data: clickableZone } = useClickableZone({
+  const { data: level } = useLevel({ storyId, id: levelId });
+
+  const { data: clickableZones } = useClicableZones({
     levelId,
     storyId,
-    id: clickableZoneId,
   });
 
   const [image] = useImage(level?.image?.secure_url ?? imagePlaceholder);
 
+  const {
+    handleOpenDrawer: handleOpenClickableZoneDrawer,
+    renderDrawer: renderClickableZoneDrawer,
+  } = useDrawer(addEditClickableZoneDrawer);
+
   return (
-    <div>
-      <Stage width={imageWidth} height={imageHeight}>
+    <div
+      onClick={() =>
+        handleOpenClickableZoneDrawer({
+          storyId,
+          levelId,
+          clickableZoneId,
+        })
+      }
+    >
+      <Stage width={displayWidth} height={displayHeight}>
         <Layer>
-          <Image width={imageWidth} height={imageHeight} image={image} />
-          <Circle
-            {...clickableZone}
-            fill="rgba(0,0,0,0.4)"
-            draggable={false}
-            stroke="rgba(255,255,255,0.8)"
-          />
+          <Image width={displayWidth} height={displayHeight} image={image} />
+          {clickableZones?.map((clickableZone) => {
+            const isPrimaryZone = clickableZone.id === clickableZoneId;
+            return (
+              <Circle
+                key={clickableZone.id}
+                clickableZone={clickableZone}
+                isPrimaryZone={isPrimaryZone}
+                draggable={false}
+                displayWidth={displayWidth}
+                displayHeight={displayHeight}
+              />
+            );
+          })}
         </Layer>
       </Stage>
+      {renderClickableZoneDrawer}
     </div>
   );
 }

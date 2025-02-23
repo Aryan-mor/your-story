@@ -12,6 +12,7 @@ import { Plus } from 'lucide-react';
 import CArray from '@/utils/cArray';
 import useDrawer from '@/components/_core/drawer/use.drawer';
 import AddEditClicableZone from '../clickable-zone/add-edit.clickable-zone.drawer';
+import MultiClickableZonePreview from '../clickable-zone/multi-preview.clickable-zone';
 
 type UpdateLevelDrawerProps = {
   storyId: undefined | Story['id'];
@@ -99,6 +100,17 @@ export default function UpdateLevelDrawer({
             No clickable zone in this level
           </span>
         )}
+        <MultiClickableZonePreview
+          levelId={levelId}
+          storyId={storyId}
+          onZoneClick={(zoneId) =>
+            handleOpenClickableZoneDrawer({
+              storyId,
+              levelId,
+              clickableZoneId: zoneId,
+            })
+          }
+        />
         {level?.clickableZone.map((clickableZone) => (
           <ClickableZonePreview
             key={clickableZone.id}
@@ -115,7 +127,7 @@ export default function UpdateLevelDrawer({
             handleOpenClickableZoneDrawer({
               storyId,
               levelId,
-              clicableZoneId: undefined,
+              clickableZoneId: undefined,
             })
           }
         >

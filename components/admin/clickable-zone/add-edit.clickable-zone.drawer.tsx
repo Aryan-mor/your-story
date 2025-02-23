@@ -30,10 +30,6 @@ function AddEditClicableZone({
   ...props
 }: AddEditClicableZoneProps) {
   const isFormInit = useRef(false);
-  const { data: level } = useLevel({
-    storyId,
-    id: levelId,
-  });
   const { data: clickableZoneBase } = useClicableZone({
     storyId,
     levelId,
@@ -104,8 +100,9 @@ function AddEditClicableZone({
     >
       {clickableZone ? (
         <ChoseClickableZone
-          imageSrc={level?.image?.secure_url}
-          clickableZone={clickableZone}
+          primaryClickableZoneId={clickableZoneId}
+          storyId={storyId}
+          levelId={levelId}
           onClickableZoneChange={(clickableZone) =>
             setValue('clickableZone', clickableZone)
           }

@@ -1,64 +1,96 @@
 'use client';
 
-import { Stage, Layer, Circle, Image } from 'react-konva';
+import { Stage, Layer, Image } from 'react-konva';
 import useImage from 'use-image';
-import { CircleConfig } from 'konva/lib/shapes/Circle';
 import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader';
+import Circle from '@/components/_core/konva/circle';
+import { useLevel } from '@/req/use-levels';
+import Level from '../../../types/level';
+import { useClicableZone } from '@/req/use-clickable-zone';
 
 type ChoseClickableZoneProps = {
-  imageSrc: string | null | undefined;
-  clickableZone: Pick<ClickableZone, 'options' | 'radius' | 'x' | 'y'>;
-  onClickableZoneChange: (
-    clicableZone: Pick<ClickableZone, 'options' | 'radius' | 'x' | 'y'>,
-  ) => void;
+  storyId: undefined | Story['id'];
+  levelId: undefined | Level['id'];
+  primaryClickableZoneId: undefined | ClickableZone['id'];
+  onClickableZoneChange: (clickableZone: ClickableZone) => void;
 };
+const originalWidth = 900;
+const originalHeight = 1600;
 
 export default function ChoseClickableZone({
-  imageSrc,
-  clickableZone,
+  levelId,
+  storyId,
+  primaryClickableZoneId,
   onClickableZoneChange,
 }: ChoseClickableZoneProps) {
-  const [image] = useImage(imageSrc ?? imagePlaceholder);
+  const { data: level } = useLevel({
+    storyId,
+    id: levelId,
+  });
+
+  const { data: primaryClickableZone } = useClicableZone({
+    id: primaryClickableZoneId,
+    storyId,
+    levelId,
+  });
+
+  const [image] = useImage(level?.image?.secure_url ?? imagePlaceholder);
+
+  const displayWidth = originalWidth / 3;
+  const displayHeight = originalHeight / 3;
 
   const handleClick = (e: any) => {
     const stage = e.target.getStage();
-    const pointer: CircleConfig = stage.getPointerPosition();
+    const pointer = stage.getPointerPosition();
+    if (!pointer || !primaryClickableZone) return;
+
     onClickableZoneChange({
-      ...clickableZone,
-      x: Number(pointer.x?.toFixed(3)),
-      y: Number(pointer.y?.toFixed(3)),
+      ...primaryClickableZone,
+      x: (pointer.x / displayWidth) * 100,
+      y: (pointer.y / displayHeight) * 100,
     });
   };
 
   return (
     <div>
-      <Stage
-        width={900 / 3}
-        height={1600 / 3}
-        onClick={handleClick}
-        onDragEnd={handleClick}
-      >
+      <Stage width={displayWidth} height={displayHeight} onClick={handleClick}>
         <Layer>
-          <Image width={900 / 3} height={1600 / 3} image={image} />
-          <Circle
-            {...clickableZone}
-            fill="rgba(0,0,0,0.4)"
-            draggable={true}
-            stroke="rgba(255,255,255,0.8)"
-          />
+          <Image width={displayWidth} height={displayHeight} image={image} />
+          {level?.clickableZone?.map((clz) => {
+            const isPrimaryZone = clz.id === primaryClickableZoneId;
+            return (
+              <Circle
+                key={clz.id}
+                clickableZone={clz}
+                displayWidth={displayWidth}
+                displayHeight={displayHeight}
+                isPrimaryZone={isPrimaryZone}
+                draggable={isPrimaryZone}
+                onDragMove={(e) => {
+                  if (primaryClickableZone)
+                    onClickableZoneChange({
+                      ...primaryClickableZone,
+                      x: (e.target.x() / displayWidth) * 100,
+                      y: (e.target.y() / displayHeight) * 100,
+                    });
+                }}
+              />
+            );
+          })}
         </Layer>
       </Stage>
       <div>
         <input
           type="range"
-          min="10"
-          max="100"
-          value={clickableZone.radius}
+          min="5"
+          max="50"
+          value={primaryClickableZone?.radius}
           onChange={(e) => {
-            return onClickableZoneChange({
-              ...clickableZone,
-              radius: parseInt(e.target.value),
-            });
+            if (primaryClickableZone)
+              onClickableZoneChange({
+                ...primaryClickableZone,
+                radius: parseFloat(e.target.value),
+              });
           }}
         />
       </div>

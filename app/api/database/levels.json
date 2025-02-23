@@ -11,9 +11,16 @@
     "title": "Test2",
     "clickableZone": [
       {
-        "x": 186,
-        "y": 260.839,
-        "radius": 69,
+        "x": 80.33333333333333,
+        "y": 48.72000703131866,
+        "radius": 15,
+        "options": [],
+        "id": "m7gtz2y53cpudotca6f"
+      },
+      {
+        "x": 31.33333333333334,
+        "y": 48.90739167374682,
+        "radius": 12,
         "options": [],
         "id": "m7grc870xftnswtww5"
       }
