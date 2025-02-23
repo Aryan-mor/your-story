@@ -68,7 +68,7 @@ const getOneFromHook = <
   useHook: HOOK<HOOK_PARAMS, HOOK_OPTIONS, RESULT_ITEM>,
 ) => {
   return (
-    params: HOOK_PARAMS & { id: undefined | ID },
+    params: HOOK_PARAMS & { id: null | undefined | ID },
     options?: HOOK_OPTIONS,
   ) => {
     const {

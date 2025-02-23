@@ -4,7 +4,7 @@ import { useLevel } from '@/req/use-levels';
 import { Layer, Stage, Image } from 'react-konva';
 import useImage from 'use-image';
 import addEditClickableZoneDrawer from './add-edit.clickable-zone.drawer';
-import { useClickableZones } from '@/req/use-clickable-zone';
+import { useClickableZone, useClickableZones } from '@/req/use-clickable-zone';
 import Circle from '@/components/_core/konva/circle';
 
 type ClickableZonePreviewProps = {
@@ -30,6 +30,11 @@ export default function ClickableZonePreview({
     levelId,
     storyId,
   });
+  const { data: clickableZone } = useClickableZone({
+    levelId,
+    storyId,
+    id: clickableZoneId,
+  });
 
   const [image] = useImage(level?.image?.secure_url ?? imagePlaceholder);
 
@@ -40,6 +45,7 @@ export default function ClickableZonePreview({
 
   return (
     <div
+      className="border flex justify-between rounded-lg p-2"
       onClick={() =>
         handleOpenClickableZoneDrawer({
           storyId,
@@ -48,6 +54,9 @@ export default function ClickableZonePreview({
         })
       }
     >
+      <div>
+        <span className="text-base font-semibold">{clickableZone?.note}</span>
+      </div>
       <Stage width={displayWidth} height={displayHeight}>
         <Layer>
           <Image width={displayWidth} height={displayHeight} image={image} />

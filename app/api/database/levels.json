@@ -8,20 +8,44 @@
   },
   {
     "id": "m7eiw4s1w19mq1uca7q",
-    "title": "Test2",
+    "title": "Test3",
     "clickableZone": [
       {
         "x": 80.33333333333333,
         "y": 48.72000703131866,
         "radius": 15,
         "options": [],
+        "note": "ssafsdaf asf a fa",
         "id": "m7gtz2y53cpudotca6f"
       },
       {
         "x": 31.00000000000001,
         "y": 49.46954560103128,
         "radius": 16,
-        "options": [],
+        "options": [
+          {
+            "text": "Test option",
+            "nextLevelId": "m7eiybq5gg2sj6fhet6",
+            "transitionAnimation": {
+              "asset_id": "29a189fbecb969f71eaa1cccdda149b4",
+              "public_id": "m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie",
+              "format": "mp4",
+              "version": 1740326279,
+              "resource_type": "video",
+              "type": "upload",
+              "created_at": "2025-02-23T15:57:59Z",
+              "bytes": 5333058,
+              "width": 720,
+              "height": 1280,
+              "asset_folder": "m7eiw4s1w19mq1uca7q",
+              "display_name": "htjjsqshp0ogkm85dlie",
+              "url": "http://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4",
+              "secure_url": "https://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4"
+            },
+            "id": "m7hzwint7hwt83h7je5"
+          }
+        ],
+        "note": "FFFFFFFFFF3",
         "id": "m7grc870xftnswtww5"
       }
     ],
@@ -103,6 +127,52 @@
     "id": "m7ekunrdb3amz46mszj",
     "title": "ZXXZX",
     "clickableZone": [],
+    "image": null,
+    "transitionAnimation": null
+  },
+  {
+    "id": "m7i1hifgg9p1lwoq2il",
+    "title": "",
+    "clickableZone": [
+      {
+        "x": 80.33333333333333,
+        "y": 48.72000703131866,
+        "radius": 15,
+        "options": [],
+        "note": "ssafsdaf asf a fa",
+        "id": "m7gtz2y53cpudotca6f"
+      },
+      {
+        "x": 31.00000000000001,
+        "y": 49.46954560103128,
+        "radius": 16,
+        "options": [
+          {
+            "text": "Test option",
+            "nextLevelId": "m7eiybq5gg2sj6fhet6",
+            "transitionAnimation": {
+              "asset_id": "29a189fbecb969f71eaa1cccdda149b4",
+              "public_id": "m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie",
+              "format": "mp4",
+              "version": 1740326279,
+              "resource_type": "video",
+              "type": "upload",
+              "created_at": "2025-02-23T15:57:59Z",
+              "bytes": 5333058,
+              "width": 720,
+              "height": 1280,
+              "asset_folder": "m7eiw4s1w19mq1uca7q",
+              "display_name": "htjjsqshp0ogkm85dlie",
+              "url": "http://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4",
+              "secure_url": "https://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4"
+            },
+            "id": "m7hzwint7hwt83h7je5"
+          }
+        ],
+        "note": "TEST",
+        "id": "m7grc870xftnswtww5"
+      }
+    ],
     "image": null,
     "transitionAnimation": null
   }

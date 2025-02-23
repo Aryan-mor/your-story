@@ -8,7 +8,6 @@ const LevelsKey = 'levels';
 const useLevelsQuery = (
   params: { storyId: undefined | Story['id'] } | undefined,
 ) => {
-  console.log('askfjkjaskfaf first', params?.storyId);
   return useQuery({
     queryKey: [LevelsKey, params?.storyId],
     queryFn: () => {
@@ -51,8 +50,6 @@ export const useUpdateLevel = (params: {
         });
     },
     onSuccess: (res: { story: Story }) => {
-      console.log('askfjkjaskfaf', res.story.id);
-
       queryClient.invalidateQueries({ queryKey: [LevelsKey, res.story.id] });
       refchStories();
       return res;

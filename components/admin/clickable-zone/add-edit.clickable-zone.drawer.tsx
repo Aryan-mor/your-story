@@ -4,7 +4,6 @@ import {
   useClickableZone,
   useUpdateClickableZone,
 } from '@/req/use-clickable-zone';
-import { useLevel } from '@/req/use-levels';
 import useLoading from '@/utils/use-loading';
 import { useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
@@ -12,6 +11,8 @@ import ChoseClickableZone from './chose.clickable-zone';
 import ClickableZone, {
   defaultClickableZone,
 } from '../../../types/clickableZone/clickableZone';
+import Textarea from '@/components/_core/_form/textarea/textarea';
+import { pick } from 'radash';
 
 type AddEditClicableZoneProps = {
   storyId: undefined | Story['id'];
@@ -20,7 +21,7 @@ type AddEditClicableZoneProps = {
 } & DrawerProps;
 
 type FormData = {
-  clickableZone: Pick<ClickableZone, 'options' | 'radius' | 'x' | 'y'>;
+  clickableZone: Pick<ClickableZone, 'options' | 'note' | 'radius' | 'x' | 'y'>;
 };
 
 function AddEditClicableZone({
@@ -38,7 +39,8 @@ function AddEditClicableZone({
 
   const { isLoading, onLoadingStart, onLoadingFinished } = useLoading();
 
-  const { handleSubmit, setValue, watch, reset } = useForm<FormData>();
+  const { register, handleSubmit, setValue, watch, reset } =
+    useForm<FormData>();
 
   const updateClickableZone = useUpdateClickableZone({
     levelId,
@@ -49,20 +51,16 @@ function AddEditClicableZone({
 
   useEffect(() => {
     if (isFormInit.current) return;
-    if (!clickableZoneId) {
-      isFormInit.current = true;
-      reset({
-        clickableZone: defaultClickableZone,
-      });
-      return;
-    }
-    if (!clickableZoneBase) return;
+    if (clickableZoneId && !clickableZoneBase) return;
     isFormInit.current = true;
     reset({
-      clickableZone: {
-        ...defaultClickableZone,
-        ...clickableZoneBase,
-      },
+      clickableZone: pick(
+        {
+          ...defaultClickableZone,
+          ...(clickableZoneBase ?? {}),
+        },
+        ['options', 'note', 'radius', 'x', 'y'],
+      ),
     });
   }, [clickableZone, clickableZoneBase, clickableZoneId, reset]);
 
@@ -98,6 +96,7 @@ function AddEditClicableZone({
       }}
       {...props}
     >
+      <Textarea label="Note" {...register('clickableZone.note')} />
       {clickableZoneBase && clickableZone ? (
         <ChoseClickableZone
           primaryClickableZone={{ ...clickableZoneBase, ...clickableZone }}

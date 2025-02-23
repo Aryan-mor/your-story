@@ -10,6 +10,7 @@ type ClickableZone = {
   y: number;
   radius: number;
   options: ClickableZoneOption[];
+  note: string;
 };
 
 export const defaultClickableZone: Omit<ClickableZone, 'id'> = {
@@ -17,6 +18,7 @@ export const defaultClickableZone: Omit<ClickableZone, 'id'> = {
   y: 5,
   radius: 50,
   options: [],
+  note: '',
 };
 
 export default ClickableZone;

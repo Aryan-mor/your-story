@@ -11,8 +11,6 @@ import Button from '@/components/_core/button/button';
 import CArray from '@/utils/cArray';
 import useDrawer from '@/components/_core/drawer/use.drawer';
 import AddEditOptionDrawer from '../option/add-edit.option.drawer';
-import ClickableZonePreview from './preview.clickable-zone';
-import ClickableZoneOption from '../../../.history/types/clickableZone/option.clickableZone_20250223112019';
 import PreviewClickableZoneOption from '../option/preview.clickable-zone-option';
 
 type ChoseClickableZoneProps = {

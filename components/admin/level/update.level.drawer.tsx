@@ -13,6 +13,7 @@ import CArray from '@/utils/cArray';
 import useDrawer from '@/components/_core/drawer/use.drawer';
 import AddEditClicableZone from '../clickable-zone/add-edit.clickable-zone.drawer';
 import MultiClickableZonePreview from '../clickable-zone/multi-preview.clickable-zone';
+import { omit, pick } from 'radash';
 
 type UpdateLevelDrawerProps = {
   storyId: undefined | Story['id'];
@@ -46,7 +47,7 @@ export default function UpdateLevelDrawer({
   useEffect(() => {
     if (!level || isFormInit.current) return;
     isFormInit.current = true;
-    reset({ ...level });
+    reset(pick(level, ['id', 'image', 'title']));
   }, [level, reset]);
 
   const onSubmit = useCallback(
@@ -100,25 +101,33 @@ export default function UpdateLevelDrawer({
             No clickable zone in this level
           </span>
         )}
-        <MultiClickableZonePreview
-          levelId={levelId}
-          storyId={storyId}
-          onZoneClick={(zoneId) =>
-            handleOpenClickableZoneDrawer({
-              storyId,
-              levelId,
-              clickableZoneId: zoneId,
-            })
-          }
-        />
-        {level?.clickableZone.map((clickableZone) => (
-          <ClickableZonePreview
-            key={clickableZone.id}
-            levelId={levelId}
-            storyId={storyId}
-            clickableZoneId={clickableZone.id}
-          />
-        ))}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex gap-3 justify-between border rounded-lg p-2">
+            <div className="flex flex-col w-full">
+              <span className="pb-2">All clickable zone</span>
+              <span>Clickable zone: {level?.clickableZone?.length}</span>
+            </div>
+            <MultiClickableZonePreview
+              levelId={levelId}
+              storyId={storyId}
+              onZoneClick={(zoneId) =>
+                handleOpenClickableZoneDrawer({
+                  storyId,
+                  levelId,
+                  clickableZoneId: zoneId,
+                })
+              }
+            />
+          </div>
+          {level?.clickableZone.map((clickableZone) => (
+            <ClickableZonePreview
+              key={clickableZone.id}
+              levelId={levelId}
+              storyId={storyId}
+              clickableZoneId={clickableZone.id}
+            />
+          ))}
+        </div>
         <Button
           className="w-fit"
           color="primary"

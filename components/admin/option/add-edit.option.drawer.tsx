@@ -18,6 +18,7 @@ import ImageUploader from '@/components/_core/imageUploader/ImageUploader';
 import VideoUploader, {
   Video,
 } from '@/components/_core/videoUploader/videoUploader';
+import { pick } from 'radash';
 
 type AddEditOptionProps = {
   storyId: undefined | Story['id'];
@@ -68,27 +69,28 @@ export default function AddEditOptionDrawer({
 
   useEffect(() => {
     if (isFormInit.current) return;
-    if (!clickableZoneOptionId) {
-      isFormInit.current = true;
-      reset({
-        clickableZoneOption: defaultClickableZoneOption,
-      });
-      return;
-    }
-    if (!clickableZoneOptionBase) return;
+    if (clickableZoneOptionId && !clickableZoneOptionBase) return;
     isFormInit.current = true;
     reset({
-      clickableZoneOption: {
-        ...defaultClickableZoneOption,
-        ...clickableZoneOptionBase,
-      },
+      clickableZoneOption: pick(
+        {
+          ...defaultClickableZoneOption,
+          ...(clickableZoneOptionBase ?? {}),
+        },
+        ['text', 'nextLevelId', 'transitionAnimation'],
+      ),
     });
   }, [clickableZoneId, clickableZoneOptionBase, clickableZoneOptionId, reset]);
 
   const onSubmit = useCallback(
     (form: FormData) => {
       onLoadingStart();
-      updateClickableZoneOption(form.clickableZoneOption)
+      updateClickableZoneOption({
+        nextLevelId: form.clickableZoneOption?.nextLevelId ?? undefined,
+        text: form.clickableZoneOption?.text ?? undefined,
+        transitionAnimation:
+          form.clickableZoneOption?.transitionAnimation ?? undefined,
+      })
         ?.then(() => {
           props.onClose();
         })
