@@ -98,9 +98,9 @@ function AddEditClicableZone({
       }}
       {...props}
     >
-      {clickableZone ? (
+      {clickableZoneBase && clickableZone ? (
         <ChoseClickableZone
-          primaryClickableZoneId={clickableZoneId}
+          primaryClickableZone={{ ...clickableZoneBase, ...clickableZone }}
           storyId={storyId}
           levelId={levelId}
           onClickableZoneChange={(clickableZone) =>

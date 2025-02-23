@@ -6,12 +6,11 @@ import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader
 import Circle from '@/components/_core/konva/circle';
 import { useLevel } from '@/req/use-levels';
 import Level from '../../../types/level';
-import { useClicableZone } from '@/req/use-clickable-zone';
 
 type ChoseClickableZoneProps = {
   storyId: undefined | Story['id'];
   levelId: undefined | Level['id'];
-  primaryClickableZoneId: undefined | ClickableZone['id'];
+  primaryClickableZone: undefined | ClickableZone;
   onClickableZoneChange: (clickableZone: ClickableZone) => void;
 };
 const originalWidth = 900;
@@ -20,18 +19,12 @@ const originalHeight = 1600;
 export default function ChoseClickableZone({
   levelId,
   storyId,
-  primaryClickableZoneId,
+  primaryClickableZone,
   onClickableZoneChange,
 }: ChoseClickableZoneProps) {
   const { data: level } = useLevel({
     storyId,
     id: levelId,
-  });
-
-  const { data: primaryClickableZone } = useClicableZone({
-    id: primaryClickableZoneId,
-    storyId,
-    levelId,
   });
 
   const [image] = useImage(level?.image?.secure_url ?? imagePlaceholder);
@@ -57,11 +50,12 @@ export default function ChoseClickableZone({
         <Layer>
           <Image width={displayWidth} height={displayHeight} image={image} />
           {level?.clickableZone?.map((clz) => {
-            const isPrimaryZone = clz.id === primaryClickableZoneId;
+            const isPrimaryZone = clz.id === primaryClickableZone?.id;
+            const clickableZone = isPrimaryZone ? primaryClickableZone : clz;
             return (
               <Circle
-                key={clz.id}
-                clickableZone={clz}
+                key={clickableZone.id}
+                clickableZone={clickableZone}
                 displayWidth={displayWidth}
                 displayHeight={displayHeight}
                 isPrimaryZone={isPrimaryZone}
