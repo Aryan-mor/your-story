@@ -14,6 +14,7 @@ import CreateLevelModal from '@/components/admin/level/create.level.modal';
 import useModal from '@/components/_core/modal/use.modal';
 import { Spinner } from '@heroui/react';
 import Textarea from '@/components/_core/_form/textarea/textarea';
+import { pick } from 'radash';
 
 type FormData = Pick<Story, 'title' | 'description' | 'thumbnail'>;
 export default function UploadForm() {
@@ -36,7 +37,7 @@ export default function UploadForm() {
   useEffect(() => {
     if (!story || isFormInit.current) return;
     isFormInit.current = true;
-    reset({ ...story });
+    reset(pick(story, ['id', 'title', 'description', 'thumbnail']));
   }, [reset, story]);
 
   const onDone = useCallback(() => {

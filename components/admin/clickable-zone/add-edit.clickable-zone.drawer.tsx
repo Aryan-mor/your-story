@@ -59,7 +59,7 @@ function AddEditClicableZone({
           ...defaultClickableZone,
           ...(clickableZoneBase ?? {}),
         },
-        ['options', 'note', 'radius', 'x', 'y'],
+        ['id', 'options', 'note', 'radius', 'x', 'y'],
       ),
     });
   }, [clickableZone, clickableZoneBase, clickableZoneId, reset]);

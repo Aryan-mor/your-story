@@ -77,7 +77,7 @@ export default function AddEditOptionDrawer({
           ...defaultClickableZoneOption,
           ...(clickableZoneOptionBase ?? {}),
         },
-        ['text', 'nextLevelId', 'transitionAnimation'],
+        ['id', 'text', 'nextLevelId', 'transitionAnimation'],
       ),
     });
   }, [clickableZoneId, clickableZoneOptionBase, clickableZoneOptionId, reset]);
