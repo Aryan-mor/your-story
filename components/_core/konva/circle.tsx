@@ -24,6 +24,7 @@ export default function Circle({
       stroke={
         isPrimaryZone ? 'rgba(31, 148, 33, 0.6)' : 'rgba(255,255,255,0.2)'
       }
+      onClick={onClick}
       draggable={draggable}
       onMouseEnter={
         draggable || onClick

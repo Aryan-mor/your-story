@@ -4,7 +4,7 @@ import { useLevel } from '@/req/use-levels';
 import { Layer, Stage, Image } from 'react-konva';
 import useImage from 'use-image';
 import addEditClickableZoneDrawer from './add-edit.clickable-zone.drawer';
-import { useClicableZones } from '@/req/use-clickable-zone';
+import { useClickableZones } from '@/req/use-clickable-zone';
 import Circle from '@/components/_core/konva/circle';
 
 type ClickableZonePreviewProps = {
@@ -21,12 +21,12 @@ const displayHeight = originalHeight / 5;
 
 export default function ClickableZonePreview({
   levelId,
-  clickableZoneId,
   storyId,
+  clickableZoneId,
 }: ClickableZonePreviewProps) {
   const { data: level } = useLevel({ storyId, id: levelId });
 
-  const { data: clickableZones } = useClicableZones({
+  const { data: clickableZones } = useClickableZones({
     levelId,
     storyId,
   });

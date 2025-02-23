@@ -1,6 +1,6 @@
 import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader';
 import Circle from '@/components/_core/konva/circle';
-import { useClicableZones } from '@/req/use-clickable-zone';
+import { useClickableZones } from '@/req/use-clickable-zone';
 import { useLevel } from '@/req/use-levels';
 import { Layer, Stage, Image } from 'react-konva';
 import useImage from 'use-image';
@@ -23,7 +23,7 @@ export default function MultiClickableZonePreview({
   onZoneClick,
 }: ClickableZoneMultiPreviewProps) {
   const { data: level } = useLevel({ storyId, id: levelId });
-  const { data: clickableZones } = useClicableZones({
+  const { data: clickableZones } = useClickableZones({
     levelId,
     storyId,
   });

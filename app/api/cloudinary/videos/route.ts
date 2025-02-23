@@ -12,10 +12,10 @@ export async function GET() {
   try {
     const result = await cloudinary.api.resources({
       type: 'upload',
-      resource_type: 'image',
+      resource_type: 'video',
       max_results: 50,
     });
-    return NextResponse.json({ images: result.resources });
+    return NextResponse.json({ videos: result.resources });
   } catch (error) {
     console.error('Error fetching images:', error);
     return NextResponse.json(

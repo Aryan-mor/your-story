@@ -6,7 +6,7 @@ import CArray from '@/utils/cArray';
 import { defaultClickableZone } from '@/types/clickableZone/clickableZone';
 import { newUuid } from '@/types/_core/uuid';
 
-const useClicableZoneQuery = (
+const useClickableZoneQuery = (
   params:
     | { storyId: undefined | Story['id']; levelId: undefined | Level['id'] }
     | undefined,
@@ -80,7 +80,7 @@ export const useRemoveClickableZone = (params: {
 };
 
 export const {
-  use: useClicableZones,
-  useObjectify: useObjectifyClicableZones,
-  useOne: useClicableZone,
-} = ReactQueryHook(useClicableZoneQuery);
+  use: useClickableZones,
+  useObjectify: useObjectifyClickableZones,
+  useOne: useClickableZone,
+} = ReactQueryHook(useClickableZoneQuery);

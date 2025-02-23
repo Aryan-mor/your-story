@@ -13,6 +13,7 @@ const Select = forwardRef<HTMLSelectElement | null, SelectProps>(
         {...props}
         variant={variant}
         radius={radius}
+        labelPlacement="outside"
         classNames={{
           ...classNames,
           trigger: twMerge('shadow-none', classNames?.trigger),

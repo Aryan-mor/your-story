@@ -7,7 +7,14 @@ type ClickableZoneOptionId = Uuid & {
 type ClickableZoneOption = {
   id: ClickableZoneOptionId;
   text: string;
-  nextLevelId: Level['id'];
+  nextLevelId: null | Level['id'];
+  transitionAnimation: null | Video;
+};
+
+export const defaultClickableZoneOption: Omit<ClickableZoneOption, 'id'> = {
+  text: '',
+  nextLevelId: null,
+  transitionAnimation: null,
 };
 
 export default ClickableZoneOption;

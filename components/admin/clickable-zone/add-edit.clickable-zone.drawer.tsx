@@ -1,7 +1,7 @@
 import Drawer, { DrawerProps } from '@/components/_core/drawer/drawer';
 import LazyDrawer from '@/components/_core/drawer/lazy.drawer';
 import {
-  useClicableZone,
+  useClickableZone,
   useUpdateClickableZone,
 } from '@/req/use-clickable-zone';
 import { useLevel } from '@/req/use-levels';
@@ -30,7 +30,7 @@ function AddEditClicableZone({
   ...props
 }: AddEditClicableZoneProps) {
   const isFormInit = useRef(false);
-  const { data: clickableZoneBase } = useClicableZone({
+  const { data: clickableZoneBase } = useClickableZone({
     storyId,
     levelId,
     id: clickableZoneId,
