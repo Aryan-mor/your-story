@@ -11,6 +11,7 @@ type Story = {
   thumbnail: null | Image;
   startLevelId: null | Level['id'];
   levels: Level['id'][];
+  introAnimation: null | Video;
 };
 
 export const defaultStory: Partial<Story> = {
@@ -18,6 +19,7 @@ export const defaultStory: Partial<Story> = {
   description: '',
   thumbnail: null,
   startLevelId: null,
+  introAnimation: null,
   levels: [],
 };
 

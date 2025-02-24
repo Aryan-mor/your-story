@@ -31,14 +31,13 @@ export default function CreateLevelModal({
           onSuccess: ({ story }: { story: Story }) => {
             props.onClose();
             reset();
-            console.log('jshafjhjsahjfhsaf new level', { storyId, story });
             //TODO open level edit modal
           },
           onSettled: onLoadingFinished,
         },
       );
     },
-    [onLoadingFinished, onLoadingStart, props, reset, storyId, updateLevel],
+    [onLoadingFinished, onLoadingStart, props, reset, updateLevel],
   );
 
   return (

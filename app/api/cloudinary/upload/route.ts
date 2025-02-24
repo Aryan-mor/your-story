@@ -11,8 +11,6 @@ cloudinary.config({
 export async function POST(request: Request) {
   try {
     const { image, video, scope } = await request.json();
-    console.log('lasfklkasf', { image: !!image, video: !!video });
-
     const result = await cloudinary.uploader.upload(image ?? video, {
       folder: scope ?? 'general',
       resource_type: image ? 'image' : 'video',

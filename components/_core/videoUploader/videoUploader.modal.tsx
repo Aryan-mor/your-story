@@ -52,8 +52,6 @@ export default function VideoUploaderModal({
     });
   };
 
-  console.log('alsfkllkaslfa', videos);
-
   return (
     <Modal
       size="full"

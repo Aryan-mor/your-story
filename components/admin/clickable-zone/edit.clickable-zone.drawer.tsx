@@ -5,7 +5,7 @@ import {
   useUpdateClickableZone,
 } from '@/req/use-clickable-zone';
 import useLoading from '@/utils/use-loading';
-import { useCallback, useEffect, useRef } from 'react';
+import { Fragment, useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import ChoseClickableZone from './chose.clickable-zone';
 import ClickableZone, {
@@ -14,7 +14,7 @@ import ClickableZone, {
 import Textarea from '@/components/_core/_form/textarea/textarea';
 import { pick } from 'radash';
 
-type AddEditClicableZoneProps = {
+type EditClicableZoneProps = {
   storyId: undefined | Story['id'];
   levelId: undefined | Level['id'];
   clickableZoneId: undefined | ClickableZone['id'];
@@ -24,12 +24,12 @@ type FormData = {
   clickableZone: Pick<ClickableZone, 'options' | 'note' | 'radius' | 'x' | 'y'>;
 };
 
-function AddEditClicableZone({
+function EditClicableZone({
   storyId,
   levelId,
   clickableZoneId,
   ...props
-}: AddEditClicableZoneProps) {
+}: EditClicableZoneProps) {
   const isFormInit = useRef(false);
   const { data: clickableZoneBase } = useClickableZone({
     storyId,
@@ -98,14 +98,16 @@ function AddEditClicableZone({
     >
       <Textarea label="Note" {...register('clickableZone.note')} />
       {clickableZoneBase && clickableZone ? (
-        <ChoseClickableZone
-          primaryClickableZone={{ ...clickableZoneBase, ...clickableZone }}
-          storyId={storyId}
-          levelId={levelId}
-          onClickableZoneChange={(clickableZone) =>
-            setValue('clickableZone', clickableZone)
-          }
-        />
+        <Fragment>
+          <ChoseClickableZone
+            primaryClickableZone={{ ...clickableZoneBase, ...clickableZone }}
+            storyId={storyId}
+            levelId={levelId}
+            onClickableZoneChange={(clickableZone) =>
+              setValue('clickableZone', clickableZone)
+            }
+          />
+        </Fragment>
       ) : (
         'Loading ...'
       )}
@@ -113,4 +115,4 @@ function AddEditClicableZone({
   );
 }
 
-export default LazyDrawer(AddEditClicableZone);
+export default LazyDrawer(EditClicableZone);

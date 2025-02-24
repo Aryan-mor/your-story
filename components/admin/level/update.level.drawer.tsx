@@ -11,9 +11,11 @@ import Button from '@/components/_core/button/button';
 import { Plus } from 'lucide-react';
 import CArray from '@/utils/cArray';
 import useDrawer from '@/components/_core/drawer/use.drawer';
-import AddEditClicableZone from '../clickable-zone/add-edit.clickable-zone.drawer';
+import EditClicableZone from '../clickable-zone/edit.clickable-zone.drawer';
 import MultiClickableZonePreview from '../clickable-zone/multi-preview.clickable-zone';
 import { omit, pick } from 'radash';
+import { useUpdateClickableZone } from '@/req/use-clickable-zone';
+import { defaultClickableZone } from '@/types/clickableZone/clickableZone';
 
 type UpdateLevelDrawerProps = {
   storyId: undefined | Story['id'];
@@ -33,10 +35,14 @@ export default function UpdateLevelDrawer({
   });
   const updateLevel = useUpdateLevel({ storyId });
   const isFormInit = useRef(false);
+  const updateClickableZone = useUpdateClickableZone({
+    levelId,
+    storyId,
+  });
   const {
     handleOpenDrawer: handleOpenClickableZoneDrawer,
     renderDrawer: renderClickableZoneDrawer,
-  } = useDrawer(AddEditClicableZone);
+  } = useDrawer(EditClicableZone);
 
   const { isLoading, onLoadingStart, onLoadingFinished } = useLoading();
 
@@ -101,44 +107,51 @@ export default function UpdateLevelDrawer({
             No clickable zone in this level
           </span>
         )}
-        <div className="grid grid-cols-2 gap-3">
-          <div className="flex gap-3 justify-between border rounded-lg p-2">
-            <div className="flex flex-col w-full">
-              <span className="pb-2">All clickable zone</span>
-              <span>Clickable zone: {level?.clickableZone?.length}</span>
+
+        {CArray.isNotEmpty(level?.clickableZone) && (
+          <div className="grid grid-cols-2 gap-3">
+            <div className="flex gap-3 justify-between border rounded-lg p-2">
+              <div className="flex flex-col w-full">
+                <span className="pb-2">All clickable zone</span>
+                <span>Clickable zone: {level?.clickableZone?.length}</span>
+              </div>
+              <MultiClickableZonePreview
+                levelId={levelId}
+                storyId={storyId}
+                onZoneClick={(zoneId) =>
+                  handleOpenClickableZoneDrawer({
+                    storyId,
+                    levelId,
+                    clickableZoneId: zoneId,
+                  })
+                }
+              />
             </div>
-            <MultiClickableZonePreview
-              levelId={levelId}
-              storyId={storyId}
-              onZoneClick={(zoneId) =>
-                handleOpenClickableZoneDrawer({
-                  storyId,
-                  levelId,
-                  clickableZoneId: zoneId,
-                })
-              }
-            />
+            {level?.clickableZone.map((clickableZone) => (
+              <ClickableZonePreview
+                key={clickableZone.id}
+                levelId={levelId}
+                storyId={storyId}
+                clickableZoneId={clickableZone.id}
+              />
+            ))}
           </div>
-          {level?.clickableZone.map((clickableZone) => (
-            <ClickableZonePreview
-              key={clickableZone.id}
-              levelId={levelId}
-              storyId={storyId}
-              clickableZoneId={clickableZone.id}
-            />
-          ))}
-        </div>
+        )}
         <Button
           className="w-fit"
           color="primary"
           startContent={<Plus />}
-          onPress={() =>
-            handleOpenClickableZoneDrawer({
-              storyId,
-              levelId,
-              clickableZoneId: undefined,
-            })
-          }
+          onPress={() => {
+            updateClickableZone({
+              ...defaultClickableZone,
+            })?.then(({ data }) => {
+              handleOpenClickableZoneDrawer({
+                storyId,
+                levelId,
+                clickableZoneId: data?.clickableZone?.id,
+              });
+            });
+          }}
         >
           Add clickable zone
         </Button>

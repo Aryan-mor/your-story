@@ -4,8 +4,8 @@
     "title": "test story56666666666",
     "description": "Test description656\nsfagasfasf\nsagasgaga\nsaf\nas",
     "levels": [
-      "m7eiw4s1w19mq1uca7q",
-      "m7eiybq5gg2sj6fhet6"
+      "m7i61433mrxhk1jjwpk",
+      "m7iaocxhdjd5u2xpi5c"
     ],
     "thumbnail": {
       "asset_id": "d9fe471957decd5aec2412374fffbdfe",
@@ -22,6 +22,23 @@
       "display_name": "u5m7cfh8skuzyano7dyl",
       "url": "http://res.cloudinary.com/ddmb02zpn/image/upload/v1739907340/nextjs-uploads/u5m7cfh8skuzyano7dyl.jpg",
       "secure_url": "https://res.cloudinary.com/ddmb02zpn/image/upload/v1739907340/nextjs-uploads/u5m7cfh8skuzyano7dyl.jpg"
-    }
+    },
+    "introAnimation": {
+      "asset_id": "29a189fbecb969f71eaa1cccdda149b4",
+      "public_id": "m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie",
+      "format": "mp4",
+      "version": 1740326279,
+      "resource_type": "video",
+      "type": "upload",
+      "created_at": "2025-02-23T15:57:59Z",
+      "bytes": 5333058,
+      "width": 720,
+      "height": 1280,
+      "asset_folder": "m7eiw4s1w19mq1uca7q",
+      "display_name": "htjjsqshp0ogkm85dlie",
+      "url": "http://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4",
+      "secure_url": "https://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4"
+    },
+    "startLevelId": "m7i61433mrxhk1jjwpk"
   }
 ]

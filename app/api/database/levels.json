@@ -175,5 +175,57 @@
     ],
     "image": null,
     "transitionAnimation": null
+  },
+  {
+    "id": "m7i61433mrxhk1jjwpk",
+    "title": "Level 1",
+    "clickableZone": [
+      {
+        "x": 27.333333333333332,
+        "y": 62.39908592857352,
+        "radius": 25,
+        "options": [],
+        "note": "",
+        "id": "m7iabhug5lbx3czfpy5"
+      },
+      {
+        "x": 74.33333333333333,
+        "y": 18.925848885243017,
+        "radius": 8,
+        "options": [],
+        "note": "",
+        "id": "m7ia9g8bfnx67aeak2h"
+      },
+      {
+        "x": 5,
+        "y": 5,
+        "radius": 50,
+        "options": [],
+        "note": "",
+        "id": "m7ia8kg259e9tyc1hm"
+      }
+    ],
+    "image": {
+      "asset_id": "bc0dde7db9b1cd5fbafec8d370f62155",
+      "public_id": "m77yr06s6yu5igz4ons/op88ir9esuycegtascvw",
+      "format": "jpg",
+      "version": 1740353744,
+      "resource_type": "image",
+      "type": "upload",
+      "created_at": "2025-02-23T23:35:44Z",
+      "bytes": 483681,
+      "width": 832,
+      "height": 1472,
+      "asset_folder": "m77yr06s6yu5igz4ons",
+      "display_name": "op88ir9esuycegtascvw",
+      "url": "http://res.cloudinary.com/ddmb02zpn/image/upload/v1740353744/m77yr06s6yu5igz4ons/op88ir9esuycegtascvw.jpg",
+      "secure_url": "https://res.cloudinary.com/ddmb02zpn/image/upload/v1740353744/m77yr06s6yu5igz4ons/op88ir9esuycegtascvw.jpg"
+    }
+  },
+  {
+    "id": "m7iaocxhdjd5u2xpi5c",
+    "title": "FGFF",
+    "clickableZone": [],
+    "image": null
   }
 ]

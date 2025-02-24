@@ -59,7 +59,7 @@ type VideoProps = {
 export function Video({ video, onClick, classNames }: VideoProps) {
   return (
     <div className="flex flex-col gap-4">
-      {video ? (
+      {video?.secure_url ? (
         <video
           src={video?.secure_url ?? videoPlaceholder}
           className={tw(

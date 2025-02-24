@@ -36,17 +36,26 @@ export const useUpdateClickableZone = (params: {
   return useCallback(
     (clickableZone: Partial<ClickableZone>) => {
       if (!level) return;
-      const newClickableZone = CArray.safeOverrideItem(level.clickableZone, {
+      const newClickableZonesItem = {
         ...defaultClickableZone,
         ...clickableZone,
         id: clickableZone?.id ?? newUuid(),
-      });
+      };
+      const newClickableZone = CArray.safeOverrideItem(
+        level.clickableZone,
+        newClickableZonesItem,
+      );
 
       const newLevel = {
         ...level,
         clickableZone: newClickableZone,
       };
-      return updateLevel.mutateAsync(newLevel);
+      return updateLevel.mutateAsync(newLevel).then((res) => ({
+        data: {
+          story: res.story,
+          clickableZone: newClickableZonesItem,
+        },
+      }));
     },
     [level, updateLevel],
   );

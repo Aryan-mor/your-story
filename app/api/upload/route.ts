@@ -12,10 +12,7 @@ cloudinary.config({
 export async function POST(request: Request) {
   try {
     // Parse the request body
-    console.log('sakfjkajskfja');
-
     const { image } = await request.json();
-    console.log('sakfjkajskfja 2');
 
     if (!image) {
       return NextResponse.json({ error: 'No image provided' }, { status: 400 });

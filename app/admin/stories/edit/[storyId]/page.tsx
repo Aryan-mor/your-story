@@ -12,16 +12,25 @@ import PreviewLevelForm from '@/components/admin/level/preview.form.level';
 import { Plus } from 'lucide-react';
 import CreateLevelModal from '@/components/admin/level/create.level.modal';
 import useModal from '@/components/_core/modal/use.modal';
-import { Spinner } from '@heroui/react';
+import { SelectItem, Spinner } from '@heroui/react';
 import Textarea from '@/components/_core/_form/textarea/textarea';
 import { pick } from 'radash';
+import VideoUploader from '@/components/_core/videoUploader/videoUploader';
+import Select from '@/components/_core/_form/select/select';
+import { useLevels, useObjectifyLevels } from '@/req/use-levels';
 
-type FormData = Pick<Story, 'title' | 'description' | 'thumbnail'>;
+type FormData = Pick<
+  Story,
+  'title' | 'description' | 'startLevelId' | 'thumbnail' | 'introAnimation'
+>;
 export default function UploadForm() {
   const router = useRouter();
   const { storyId } = useParams();
   const { data: story, isLoading: isStoryLoading } = useStory({
     id: storyId,
+  });
+  const { data: levels } = useObjectifyLevels({
+    storyId,
   });
   const updateStory = useUpdateStory();
   const { register, handleSubmit, setValue, watch, reset } =
@@ -34,10 +43,21 @@ export default function UploadForm() {
   } = useModal(CreateLevelModal);
 
   const thumbnail = watch('thumbnail');
+  const introAnimation = watch('introAnimation');
+  const startLevelId = watch('startLevelId');
   useEffect(() => {
     if (!story || isFormInit.current) return;
     isFormInit.current = true;
-    reset(pick(story, ['id', 'title', 'description', 'thumbnail']));
+    reset(
+      pick(story, [
+        'id',
+        'title',
+        'description',
+        'startLevelId',
+        'thumbnail',
+        'introAnimation',
+      ]),
+    );
   }, [reset, story]);
 
   const onDone = useCallback(() => {
@@ -62,13 +82,28 @@ export default function UploadForm() {
   if (isStoryLoading || !story) return <Spinner />;
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-3 gap-5">
-      <div className="col-span-2 flex flex-wrap gap-5">
+      <div className="flex flex-col gap-5">
         <Input isDisabled={isLoading} label="Title" {...register('title')} />
         <Textarea
           isDisabled={isLoading}
           label="Description"
           {...register('description')}
         />
+        <Select
+          label="Start level"
+          isDisabled={isLoading}
+          selectedKeys={startLevelId ? [startLevelId] : []}
+          onChange={(e) => {
+            if (!e.target.value) return;
+            return setValue('startLevelId', e.target.value as Level['id']);
+          }}
+        >
+          {(story?.levels ?? []).map((levelId) => (
+            <SelectItem key={levelId} value={levelId}>
+              {levels?.[levelId]?.title}
+            </SelectItem>
+          ))}
+        </Select>
       </div>
       <div className="flex justify-center">
         <ImageUploader
@@ -80,6 +115,18 @@ export default function UploadForm() {
             wrapper: 'w-[150px]',
           }}
           onImageChange={(image) => setValue('thumbnail', image)}
+        />
+      </div>
+      <div className="flex justify-center">
+        <VideoUploader
+          scope={storyId}
+          label="Intro animation"
+          isDisabled={isLoading}
+          video={introAnimation}
+          classNames={{
+            wrapper: 'w-[150px]',
+          }}
+          onVideoChange={(video) => setValue('introAnimation', video)}
         />
       </div>
       <div className="grid grid-cols-2 col-span-3 pt-5 gap-4">
