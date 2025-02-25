@@ -181,28 +181,18 @@
     "title": "Level 1",
     "clickableZone": [
       {
-        "x": 27.333333333333332,
-        "y": 62.39908592857352,
-        "radius": 25,
-        "options": [],
-        "note": "",
-        "id": "m7iabhug5lbx3czfpy5"
-      },
-      {
-        "x": 74.33333333333333,
-        "y": 18.925848885243017,
-        "radius": 8,
-        "options": [],
-        "note": "",
-        "id": "m7ia9g8bfnx67aeak2h"
-      },
-      {
-        "x": 5,
-        "y": 5,
-        "radius": 50,
-        "options": [],
-        "note": "",
-        "id": "m7ia8kg259e9tyc1hm"
+        "x": 31.666666666666664,
+        "y": 55.27846951630387,
+        "radius": 17,
+        "options": [
+          {
+            "text": "GGGGGGGGGGGGgCC",
+            "nextLevelId": "m7i61433mrxhk1jjwpk",
+            "id": "m7jqaqr9g0phows9xz"
+          }
+        ],
+        "note": "FGSF",
+        "id": "m7jpn5pb3u9l510v9r"
       }
     ],
     "image": {

@@ -13,6 +13,7 @@ export type WithAutoHandleActionModalProps = {
 export default function WithAutoHandleActionModal({
   children,
   skipConfirmation,
+  primaryAction,
   closeButtonAction,
   ...props
 }: WithAutoHandleActionModalProps) {
@@ -20,13 +21,23 @@ export default function WithAutoHandleActionModal({
   return (
     <Fragment>
       {cloneElement(children, {
-        onClick: skipConfirmation ? props.primaryAction?.onPress : onOpen,
+        onClick: skipConfirmation ? primaryAction?.onPress : onOpen,
       })}
       <ActionModal
         isOpen={isOpen}
         onClose={onClose}
         {...props}
-        closeButtonAction={closeButtonAction}
+        primaryAction={{
+          ...primaryAction,
+          onPress: (e) => {
+            primaryAction?.onPress?.(e);
+            onClose();
+          },
+        }}
+        closeButtonAction={{
+          onPress: onClose,
+          ...closeButtonAction,
+        }}
       />
     </Fragment>
   );

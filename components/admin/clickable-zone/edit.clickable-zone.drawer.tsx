@@ -59,7 +59,7 @@ function EditClicableZone({
           ...defaultClickableZone,
           ...(clickableZoneBase ?? {}),
         },
-        ['id', 'options', 'note', 'radius', 'x', 'y'],
+        ['id', 'note', 'radius', 'x', 'y'],
       ),
     });
   }, [clickableZone, clickableZoneBase, clickableZoneId, reset]);
@@ -67,7 +67,11 @@ function EditClicableZone({
   const onSubmit = useCallback(
     (form: FormData) => {
       onLoadingStart();
-      updateClickableZone(form.clickableZone)
+      updateClickableZone({
+        ...defaultClickableZone,
+        ...(clickableZoneBase ?? {}),
+        ...form.clickableZone,
+      })
         ?.then(() => {
           props.onClose();
         })
@@ -75,7 +79,13 @@ function EditClicableZone({
           onLoadingFinished();
         });
     },
-    [onLoadingFinished, onLoadingStart, props, updateClickableZone],
+    [
+      clickableZoneBase,
+      onLoadingFinished,
+      onLoadingStart,
+      props,
+      updateClickableZone,
+    ],
   );
 
   return (

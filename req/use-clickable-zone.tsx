@@ -1,7 +1,6 @@
 import ReactQueryHook from './_core/react-query-hook';
 import { useCallback, useMemo } from 'react';
 import { useLevel, useUpdateLevel } from './use-levels';
-import ClickableZone from '../.history/types/clickableZone/clickableZone_20250222223138';
 import CArray from '@/utils/cArray';
 import { defaultClickableZone } from '@/types/clickableZone/clickableZone';
 import { newUuid } from '@/types/_core/uuid';
@@ -36,17 +35,17 @@ export const useUpdateClickableZone = (params: {
   return useCallback(
     (clickableZone: Partial<ClickableZone>) => {
       if (!level) return;
-      const newClickableZonesItem = {
+      const newClickableZonesItem: ClickableZone = {
         ...defaultClickableZone,
         ...clickableZone,
-        id: clickableZone?.id ?? newUuid(),
+        id: clickableZone?.id ?? (newUuid() as ClickableZone['id']),
       };
       const newClickableZone = CArray.safeOverrideItem(
         level.clickableZone,
         newClickableZonesItem,
       );
 
-      const newLevel = {
+      const newLevel: Level = {
         ...level,
         clickableZone: newClickableZone,
       };

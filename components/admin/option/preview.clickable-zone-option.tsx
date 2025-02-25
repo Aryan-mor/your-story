@@ -1,8 +1,11 @@
 import useDrawer from '@/components/_core/drawer/use.drawer';
 import AddEditOptionDrawer from './add-edit.option.drawer';
 import Button from '@/components/_core/button/button';
-import { Pencil } from 'lucide-react';
+import { Pencil, Trash2 } from 'lucide-react';
 import { useLevel } from '@/req/use-levels';
+import DeleteWithAutoHandleActionModal from '@/components/_core/modal/action-modal/delete.with-auto-handle.action.modal';
+import { useRemoveClickableZoneOption } from '@/req/use-clickable-zone-option';
+import useLoading from '@/utils/use-loading';
 
 export default function PreviewClickableZoneOption({
   storyId,
@@ -15,6 +18,12 @@ export default function PreviewClickableZoneOption({
   clickableZoneId: undefined | ClickableZone['id'];
   clickableZoneOption: undefined | ClickableZoneOption;
 }) {
+  const { isLoading, onLoadingStart, onLoadingFinished } = useLoading();
+  const removeClickableZoneOption = useRemoveClickableZoneOption({
+    levelId,
+    storyId,
+    clickableZoneId,
+  });
   const {
     renderDrawer: renderAddEditOptionDrawer,
     handleOpenDrawer: handleOpenAddEditOptionDrawer,
@@ -31,9 +40,10 @@ export default function PreviewClickableZoneOption({
         <span className="text-base font-semibold">
           {clickableZoneOption?.text}
         </span>
-        <span>
+        <span className="flex gap-3">
           <Button
             isIconOnly={true}
+            isDisabled={isLoading}
             onPress={() =>
               handleOpenAddEditOptionDrawer({
                 storyId,
@@ -45,6 +55,20 @@ export default function PreviewClickableZoneOption({
           >
             <Pencil />
           </Button>
+          <DeleteWithAutoHandleActionModal
+            primaryAction={{
+              onPress: () => {
+                onLoadingStart();
+                removeClickableZoneOption(clickableZoneOption?.id)?.finally(
+                  onLoadingFinished,
+                );
+              },
+            }}
+          >
+            <Button isLoading={isLoading} isIconOnly={true}>
+              <Trash2 />
+            </Button>
+          </DeleteWithAutoHandleActionModal>
         </span>
       </div>
       {nextLevel && (

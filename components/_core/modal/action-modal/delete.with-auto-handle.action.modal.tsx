@@ -3,7 +3,8 @@ import WithAutoHandleActionModal, {
   type WithAutoHandleActionModalProps,
 } from './with-auto-handle.action.modal';
 
-export type DeleteWithAutoHandleActionModalType = WithAutoHandleActionModalProps;
+export type DeleteWithAutoHandleActionModalType =
+  WithAutoHandleActionModalProps;
 
 export default function DeleteWithAutoHandleActionModal({
   children,
@@ -14,7 +15,7 @@ export default function DeleteWithAutoHandleActionModal({
   return (
     <WithAutoHandleActionModal
       title={t('Remove')}
-      message={t('Are you sure you want to delete this? This cannot be undone.')}
+      message={'Are you sure you want to delete this? This cannot be undone.'}
       {...props}
       primaryAction={{
         variant: 'solid',
@@ -26,7 +27,8 @@ export default function DeleteWithAutoHandleActionModal({
         variant: 'bordered',
         children: t('Cancel'),
         ...props.closeButtonAction,
-      }}>
+      }}
+    >
       {children}
     </WithAutoHandleActionModal>
   );
