@@ -187,6 +187,11 @@
         "options": [
           {
             "text": "GGGGGGGGGGGGgCC",
+            "nextLevelId": "m7s4d8n0076l6pb21pd5",
+            "id": "m7s4jnhnfcsvzjh2mq"
+          },
+          {
+            "text": "GGGGGGGGGGGGgCC",
             "nextLevelId": "m7i61433mrxhk1jjwpk",
             "id": "m7jqaqr9g0phows9xz"
           }
@@ -217,5 +222,138 @@
     "title": "FGFF",
     "clickableZone": [],
     "image": null
+  },
+  {
+    "id": "m7s4d8n0076l6pb21pd5",
+    "title": "Level 2",
+    "clickableZone": [
+      {
+        "x": 26.666666666666668,
+        "y": 61.40277737087276,
+        "radius": 21,
+        "options": [],
+        "note": "",
+        "id": "m7s4tk78pfrcudg2pd"
+      },
+      {
+        "x": 52,
+        "y": 36.480619927928984,
+        "radius": 21,
+        "options": [
+          {
+            "text": "Level 3",
+            "nextLevelId": "m7s4qs7rcb91hcq6c8a",
+            "transitionAnimation": {
+              "asset_id": "29a189fbecb969f71eaa1cccdda149b4",
+              "public_id": "m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie",
+              "format": "mp4",
+              "version": 1740326279,
+              "resource_type": "video",
+              "type": "upload",
+              "created_at": "2025-02-23T15:57:59Z",
+              "bytes": 5333058,
+              "width": 720,
+              "height": 1280,
+              "asset_folder": "m7eiw4s1w19mq1uca7q",
+              "display_name": "htjjsqshp0ogkm85dlie",
+              "url": "http://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4",
+              "secure_url": "https://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4"
+            },
+            "id": "m7s4u9q1j1s5jucbbjh"
+          }
+        ],
+        "note": "",
+        "id": "m7s4igpchz991mwioq8"
+      }
+    ],
+    "image": {
+      "asset_id": "b5523a20fce752cb6cf835e94154cd12",
+      "public_id": "m77yr06s6yu5igz4ons/ey4q136x9kedlehuagsf",
+      "format": "jpg",
+      "version": 1740949705,
+      "resource_type": "image",
+      "type": "upload",
+      "created_at": "2025-03-02T21:08:25Z",
+      "bytes": 135000,
+      "width": 832,
+      "height": 1472,
+      "asset_folder": "m77yr06s6yu5igz4ons",
+      "display_name": "ey4q136x9kedlehuagsf",
+      "url": "http://res.cloudinary.com/ddmb02zpn/image/upload/v1740949705/m77yr06s6yu5igz4ons/ey4q136x9kedlehuagsf.jpg",
+      "secure_url": "https://res.cloudinary.com/ddmb02zpn/image/upload/v1740949705/m77yr06s6yu5igz4ons/ey4q136x9kedlehuagsf.jpg"
+    }
+  },
+  {
+    "id": "m7s4qs7rcb91hcq6c8a",
+    "title": "Level 3",
+    "clickableZone": [
+      {
+        "x": 41.66666666666667,
+        "y": 20.92769460639264,
+        "radius": 22,
+        "options": [
+          {
+            "text": "Go to level 2",
+            "nextLevelId": "m7s4d8n0076l6pb21pd5",
+            "transitionAnimation": {
+              "asset_id": "29a189fbecb969f71eaa1cccdda149b4",
+              "public_id": "m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie",
+              "format": "mp4",
+              "version": 1740326279,
+              "resource_type": "video",
+              "type": "upload",
+              "created_at": "2025-02-23T15:57:59Z",
+              "bytes": 5333058,
+              "width": 720,
+              "height": 1280,
+              "asset_folder": "m7eiw4s1w19mq1uca7q",
+              "display_name": "htjjsqshp0ogkm85dlie",
+              "url": "http://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4",
+              "secure_url": "https://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4"
+            },
+            "id": "m7s4taq4j1chtdy6q9i"
+          },
+          {
+            "text": "Go to level 1",
+            "nextLevelId": "m7i61433mrxhk1jjwpk",
+            "transitionAnimation": {
+              "asset_id": "29a189fbecb969f71eaa1cccdda149b4",
+              "public_id": "m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie",
+              "format": "mp4",
+              "version": 1740326279,
+              "resource_type": "video",
+              "type": "upload",
+              "created_at": "2025-02-23T15:57:59Z",
+              "bytes": 5333058,
+              "width": 720,
+              "height": 1280,
+              "asset_folder": "m7eiw4s1w19mq1uca7q",
+              "display_name": "htjjsqshp0ogkm85dlie",
+              "url": "http://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4",
+              "secure_url": "https://res.cloudinary.com/ddmb02zpn/video/upload/v1740326279/m7eiw4s1w19mq1uca7q/htjjsqshp0ogkm85dlie.mp4"
+            },
+            "id": "m7s4t174rajyhovq2zk"
+          }
+        ],
+        "note": "",
+        "id": "m7s4rv9k02zp5aswwi85"
+      }
+    ],
+    "image": {
+      "asset_id": "5707a8bb5e41e5a8b697c7f5ab2447df",
+      "public_id": "m77yr06s6yu5igz4ons/zss2bgc8hy4jawwelohl",
+      "format": "jpg",
+      "version": 1740950152,
+      "resource_type": "image",
+      "type": "upload",
+      "created_at": "2025-03-02T21:15:52Z",
+      "bytes": 119660,
+      "width": 832,
+      "height": 1472,
+      "asset_folder": "m77yr06s6yu5igz4ons",
+      "display_name": "zss2bgc8hy4jawwelohl",
+      "url": "http://res.cloudinary.com/ddmb02zpn/image/upload/v1740950152/m77yr06s6yu5igz4ons/zss2bgc8hy4jawwelohl.jpg",
+      "secure_url": "https://res.cloudinary.com/ddmb02zpn/image/upload/v1740950152/m77yr06s6yu5igz4ons/zss2bgc8hy4jawwelohl.jpg"
+    }
   }
 ]
