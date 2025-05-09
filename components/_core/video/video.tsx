@@ -1,5 +1,6 @@
 'use client';
 import ReactPlayer, { ReactPlayerProps } from 'react-player';
+import { Suspense } from 'react';
 
 type VideoProps = {
   video: undefined | null | Video;
@@ -7,15 +8,17 @@ type VideoProps = {
 
 export default function Video({ video, ...props }: VideoProps) {
   return (
-    <ReactPlayer
-      url={video?.secure_url}
-      controls={false}
-      playing={true}
-      muted={true}
-      loop={false}
-      width="100%"
-      height="100%"
-      {...props}
-    />
+    <Suspense fallback={<span>Loading...</span>}>
+      <ReactPlayer
+        url={video?.secure_url}
+        controls={false}
+        playing={true}
+        muted={true}
+        loop={false}
+        width="100%"
+        height="100%"
+        {...props}
+      />
+    </Suspense>
   );
 }
