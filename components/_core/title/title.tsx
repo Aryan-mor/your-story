@@ -24,7 +24,8 @@ export default function Title({
         className={twMerge(
           'text-base font-semibold text-aos-co-primary',
           classNames?.label,
-        )}>
+        )}
+      >
         {children}
       </span>
       {chipProps && (

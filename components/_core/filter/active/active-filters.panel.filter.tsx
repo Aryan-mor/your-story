@@ -81,7 +81,10 @@ export default function ActiveFiltersPanelFilter<
   if (isFilterListIsEmpty || isEmpty(statesToShow)) return <Fragment />;
 
   return (
-    <div ref={ref} className={twMerge('flex flex-wrap gap-2 pb-1 pt-3', className)}>
+    <div
+      ref={ref}
+      className={twMerge('flex flex-wrap gap-2 pb-1 pt-3', className)}
+    >
       {statesToShowComponents}
     </div>
   );

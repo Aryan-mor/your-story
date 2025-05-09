@@ -2,7 +2,10 @@ import { useCallback } from 'react';
 import { FilterType } from '../../filter.type';
 import type { FilterStateStore, TBase } from '../../use-filter';
 import type { CheckboxFilterProps } from './checkbox.filter';
-import { type CheckboxFilterItem, isCheckboxState } from './checkbox.filter.type';
+import {
+  type CheckboxFilterItem,
+  isCheckboxState,
+} from './checkbox.filter.type';
 
 export default function useOnChangeCheckboxFilter<
   T extends TBase,

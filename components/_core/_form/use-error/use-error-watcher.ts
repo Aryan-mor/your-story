@@ -19,7 +19,10 @@ export default function useErrorWatcher<FORM extends FieldValues>({
 }: UseErrorWatcherProps<FORM>) {
   const { watch } = form;
   const rawWatchAll = watch();
-  const watchAll = useMemo(() => removeIdFromFormData(rawWatchAll), [rawWatchAll]);
+  const watchAll = useMemo(
+    () => removeIdFromFormData(rawWatchAll),
+    [rawWatchAll],
+  );
 
   const [errors, setErrors] = useState<FormError[]>([]);
   const lastValue = useRef<string>('');

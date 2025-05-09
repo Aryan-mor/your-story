@@ -39,12 +39,17 @@ export default function ListModal<ITEM>({
       className={twMerge('w-screen max-w-3xl', classNames?.root ?? '')}
       childrenRootClassName="pt-0"
       noPaddingBody
-      {...props}>
+      {...props}
+    >
       <div className={twMerge('flex flex-col gap-2', classNames?.content)}>
         {children}
         <div className={clsx('flex flex-col', modalFromSideChildrenRootPX)}>
           <div
-            className={twMerge('mb-3 text-sm text-gray-600', classNames?.results)}>
+            className={twMerge(
+              'mb-3 text-sm text-gray-600',
+              classNames?.results,
+            )}
+          >
             {list?.length ?? 0} {t('Results')} {resultSuffix}
           </div>
           <div className="flex flex-wrap space-y-3">

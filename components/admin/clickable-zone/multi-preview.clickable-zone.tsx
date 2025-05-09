@@ -2,7 +2,7 @@ import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader
 import Circle from '@/components/_core/konva/circle';
 import { useClickableZones } from '@/req/use-clickable-zone';
 import { useLevel } from '@/req/use-levels';
-import { Layer, Stage, Image } from 'react-konva';
+import { Image, Layer, Stage } from 'react-konva';
 import useImage from 'use-image';
 
 type ClickableZoneMultiPreviewProps = {

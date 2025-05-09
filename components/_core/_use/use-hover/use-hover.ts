@@ -5,7 +5,12 @@ export default function useHover<DOM extends HTMLElement>({
   enabled = true,
 }: { enabled?: boolean } = {}) {
   const ref = useRef<DOM | null>(null);
-  const { isOpen: isHovered, onOpen: onHoverIn, onClose: onHoverOut } = useOpen();
+  const {
+    isOpen: isHovered,
+    onOpen: onHoverIn,
+    onClose: onHoverOut,
+  } = useOpen();
+
   useEffect(() => {
     if (!enabled) onHoverOut();
   }, [enabled, onHoverOut]);

@@ -40,7 +40,9 @@ export const isNestedState = (state?: FilterState): state is NestedState => {
   return state?.type === FilterType.Nested;
 };
 
-export const isNestedFilter = <T>(filter: Filter<T>): filter is NestedFilter<T> => {
+export const isNestedFilter = <T>(
+  filter: Filter<T>,
+): filter is NestedFilter<T> => {
   return filter.type === FilterType.Nested;
 };
 

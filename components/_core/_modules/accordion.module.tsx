@@ -1,6 +1,6 @@
 import {
-  AccordionItem,
   Accordion as MuiAccordion,
+  AccordionItem,
   type AccordionProps,
 } from '@heroui/react';
 import type { ReactNode } from 'react';

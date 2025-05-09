@@ -93,7 +93,9 @@ export default function Information({
           classNames?.icon,
         )}
       />
-      <span className={tw('text-tiny', severityClassName?.label, classNames?.label)}>
+      <span
+        className={tw('text-tiny', severityClassName?.label, classNames?.label)}
+      >
         {label}
       </span>
     </span>

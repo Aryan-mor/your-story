@@ -46,7 +46,8 @@ export default function FormSection({
             className="absolute -right-10 top-0 ml-1"
             isIconOnly
             size="sm"
-            variant="light">
+            variant="light"
+          >
             <X size={20} className="text-gray-700" />
           </Button>
         </DeleteWithAutoHandleActionModal>

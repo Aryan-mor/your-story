@@ -30,7 +30,9 @@ export default function MultiSelectListModal<ITEM, KEY extends keyof ITEM>({
   ...props
 }: MultiSelectListModal<ITEM, KEY>) {
   const { t } = useTranslation();
-  const [selectedKeys, setSelectedKeys] = useState<Set<ITEM[keyof ITEM]>>(new Set());
+  const [selectedKeys, setSelectedKeys] = useState<Set<ITEM[keyof ITEM]>>(
+    new Set(),
+  );
   const handleSelect = useCallback(
     (item: ITEM) =>
       setSelectedKeys((oldSelectedKeys) => {
@@ -78,7 +80,8 @@ export default function MultiSelectListModal<ITEM, KEY extends keyof ITEM>({
           <SolidButton
             loading={isLoading}
             onClick={handleSave}
-            disabled={selectedKeys?.size === 0}>
+            disabled={selectedKeys?.size === 0}
+          >
             {t('Save')}
           </SolidButton>
         </div>

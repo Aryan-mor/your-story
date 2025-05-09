@@ -1,8 +1,8 @@
 import {
-  Badge,
   Avatar as NextUiAvatar,
-  type BadgeProps,
   type AvatarProps as NextUiAvatarProps,
+  Badge,
+  type BadgeProps,
 } from '@heroui/react';
 import clsx from 'clsx';
 import { tw } from '../../../utils/tw';

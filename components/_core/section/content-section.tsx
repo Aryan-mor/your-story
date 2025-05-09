@@ -23,7 +23,8 @@ export default function ContentSection({
       classNames={{
         ...sectionClassNames,
         body: twMerge('gap-aos-g-4xl', sectionClassNames?.body),
-      }}>
+      }}
+    >
       <Section.Body>
         {items.map(({ label, children, classNames = {} }) => (
           <div key={label} className="grid grid-cols-12 flex-wrap gap-2">
@@ -32,7 +33,8 @@ export default function ContentSection({
                 'col-span-full text-lg font-semibold text-aos-co-secondary xl:col-span-3',
                 sectionClassNames?.label,
                 classNames.label,
-              )}>
+              )}
+            >
               {label}
             </div>
             <div
@@ -40,7 +42,8 @@ export default function ContentSection({
                 'col-span-full flex flex-col space-y-6 xl:col-span-6',
                 sectionClassNames?.content,
                 classNames.content,
-              )}>
+              )}
+            >
               {children}
             </div>
           </div>

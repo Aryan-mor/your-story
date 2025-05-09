@@ -7,7 +7,10 @@ export default function DeleteActionTopContentTable({
   t,
   key,
   ...props
-}: { t: TFunction; count: number } & ButtonProps): ButtonPropsWithKey {
+}: {
+  t: TFunction;
+  count: number;
+} & ButtonProps): ButtonPropsWithKey {
   return {
     startContent: <Trash size={18} />,
     variant: 'flat',

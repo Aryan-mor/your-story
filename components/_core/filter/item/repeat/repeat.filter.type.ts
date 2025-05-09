@@ -54,12 +54,16 @@ export const isRepeatState = (state?: FilterState): state is RepeatState => {
   return state?.type === FilterType.Repeat;
 };
 
-export const isRepeatFilter = <T>(filter: Filter<T>): filter is RepeatFilter<T> => {
+export const isRepeatFilter = <T>(
+  filter: Filter<T>,
+): filter is RepeatFilter<T> => {
   return filter.type === FilterType.Repeat;
 };
 
 export const isRepeatAcceptableState = (
   state?: FilterState,
 ): state is RepeatAcceptableState => {
-  return isNestedState(state) || isAutocompleteState(state) || isSelectState(state);
+  return (
+    isNestedState(state) || isAutocompleteState(state) || isSelectState(state)
+  );
 };

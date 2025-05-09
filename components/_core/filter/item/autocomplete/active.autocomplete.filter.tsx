@@ -16,7 +16,12 @@ export default function ActiveAutocompleteFilter<
   filter,
   returnLabel,
   onStateChange,
-}: ActiveFilterProps<AutocompleteState, AutocompleteFilter<T>, T, FILTER_STATE>) {
+}: ActiveFilterProps<
+  AutocompleteState,
+  AutocompleteFilter<T>,
+  T,
+  FILTER_STATE
+>) {
   const label = useMemo(
     () => filter.options.find((it) => it.value === state.value)?.label,
     [filter.options, state.value],
@@ -34,7 +39,8 @@ export default function ActiveAutocompleteFilter<
   return (
     <ChipActiveItemFilter
       returnLabel={returnLabel}
-      onRemoveClick={onStateChange ? handleRemoveClicked : undefined}>
+      onRemoveClick={onStateChange ? handleRemoveClicked : undefined}
+    >
       {label}
     </ChipActiveItemFilter>
   );

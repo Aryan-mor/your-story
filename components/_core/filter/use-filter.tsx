@@ -9,17 +9,32 @@ import {
   isCheckboxFilter,
   isCheckboxState,
 } from './item/checkbox/checkbox.filter.type';
-import { isNestedFilter, isNestedState } from './item/nested/nested.filter.type';
+import {
+  isNestedFilter,
+  isNestedState,
+} from './item/nested/nested.filter.type';
 import {
   isPopupFilter,
   isPopupState,
   type PopupFilter,
   type PopupState,
 } from './item/popup/popup.filter.type';
-import { isRepeatFilter, isRepeatState } from './item/repeat/repeat.filter.type';
-import { isSearchFilter, isSearchState } from './item/search/search.filter.type';
-import { isSelectFilter, isSelectState } from './item/select/select.filter.type';
-import { isSwitchFilter, isSwitchState } from './item/switch/switch.filter.type';
+import {
+  isRepeatFilter,
+  isRepeatState,
+} from './item/repeat/repeat.filter.type';
+import {
+  isSearchFilter,
+  isSearchState,
+} from './item/search/search.filter.type';
+import {
+  isSelectFilter,
+  isSelectState,
+} from './item/select/select.filter.type';
+import {
+  isSwitchFilter,
+  isSwitchState,
+} from './item/switch/switch.filter.type';
 import type { FilterPanelProps } from './panel/panel.filter';
 
 export type TBase = any;
@@ -194,7 +209,8 @@ const useFilter = <
 
   const showFilterPanelProps = useMemo(() => {
     return (
-      filters.filter((filter) => !filter.isHidden && !filter.isInvisible).length > 0
+      filters.filter((filter) => !filter.isHidden && !filter.isInvisible)
+        .length > 0
     );
   }, [filters]);
 

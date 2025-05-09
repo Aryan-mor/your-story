@@ -1,9 +1,9 @@
 'use client'; // Mark the component as a Client Component
 
-import { Upload, Trash2 } from 'lucide-react';
+import { Trash2, Upload } from 'lucide-react';
 import Button from '../button/button';
 import Modal, { ModalProps } from '../modal/modal';
-import { Spinner, Image } from '@heroui/react';
+import { Image, Spinner } from '@heroui/react';
 import { useAddImage, useImages, useRemoveImage } from '@/req/use-images';
 import useLoading from '@/utils/use-loading';
 import DeleteWithAutoHandleActionModal from '../modal/action-modal/delete.with-auto-handle.action.modal';

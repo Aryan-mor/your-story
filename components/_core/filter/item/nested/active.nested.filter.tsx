@@ -51,17 +51,20 @@ export default function ActiveNestedFilter<
         handleChange(firstFilter.key, {
           [firstFilter.key]: filterState,
         });
-      }}>
+      }}
+    >
       <Fragment>
         {filter.filters.map((nestedFilter) => {
           const nestedAcceptableState = state?.value?.[nestedFilter.key];
-          if (!nestedAcceptableState) return <Fragment key={nestedFilter.key} />;
+          if (!nestedAcceptableState)
+            return <Fragment key={nestedFilter.key} />;
           return (
             <div
               key={nestedFilter.key}
               className={clsx(chipActiveItemFilterContentClassName(true), {
                 hidden: nestedFilter.isHidden,
-              })}>
+              })}
+            >
               <ActiveItemFilter
                 state={nestedAcceptableState}
                 filter={nestedFilter}

@@ -1,11 +1,11 @@
 import {
+  Dropdown as NextUiDropdown,
   DropdownItem,
   DropdownMenu,
-  DropdownTrigger,
-  Dropdown as NextUiDropdown,
   type DropdownMenuProps,
-  type MenuItemProps,
   type DropdownProps as NextUiDropdownProps,
+  DropdownTrigger,
+  type MenuItemProps,
 } from '@heroui/react';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';

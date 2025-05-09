@@ -33,7 +33,9 @@ export type CheckboxState = {
   value: null | Record<CheckboxFilterItem['value'], boolean>;
 } & Pick<FilterBase<FilterType.Checkbox>, 'type' | 'key'>;
 
-export const isCheckboxState = (state?: FilterState): state is CheckboxState => {
+export const isCheckboxState = (
+  state?: FilterState,
+): state is CheckboxState => {
   return state?.type === FilterType.Checkbox;
 };
 

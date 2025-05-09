@@ -28,7 +28,7 @@ export default function CreateLevelModal({
       updateLevel.mutate(
         { title: data.title },
         {
-          onSuccess: ({ story }: { story: Story }) => {
+          onSuccess: () => {
             props.onClose();
             reset();
             //TODO open level edit modal

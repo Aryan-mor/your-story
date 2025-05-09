@@ -20,7 +20,8 @@ export default function AutoSave({ autoSaveProps }: AutoSaveProps) {
             'text-red-600': !isFormValid,
           },
         ),
-      )}>
+      )}
+    >
       {!isFormValid ? (
         <>
           <CircleAlert className="mr-2" size={20} />

@@ -22,6 +22,8 @@ export const isSearchState = (state: FilterState): state is SearchState => {
   return state.type === FilterType.Search;
 };
 
-export const isSearchFilter = <T>(filter: Filter<T>): filter is SearchFilter<T> => {
+export const isSearchFilter = <T>(
+  filter: Filter<T>,
+): filter is SearchFilter<T> => {
   return filter.type === FilterType.Search;
 };

@@ -38,7 +38,8 @@ export default function ActiveSelectFilter<
           invisible: filter.isInvisible,
         }),
       }}
-      onRemoveClick={onStateChange ? handleRemoveClicked : undefined}>
+      onRemoveClick={onStateChange ? handleRemoveClicked : undefined}
+    >
       {label}
     </ChipActiveItemFilter>
   );

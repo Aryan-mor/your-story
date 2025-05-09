@@ -1,10 +1,10 @@
 'use client';
 
-import { Upload, Trash2 } from 'lucide-react';
+import { Trash2, Upload } from 'lucide-react';
 import Button from '../button/button';
 import Modal, { ModalProps } from '../modal/modal';
 import { Spinner } from '@heroui/react';
-import { useAddVideo, useVideos, useRemoveVideo } from '@/req/use-videos';
+import { useAddVideo, useRemoveVideo, useVideos } from '@/req/use-videos';
 import useLoading from '@/utils/use-loading';
 import DeleteWithAutoHandleActionModal from '../modal/action-modal/delete.with-auto-handle.action.modal';
 

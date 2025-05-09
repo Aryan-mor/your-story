@@ -1,7 +1,7 @@
 import useDrawer from '@/components/_core/drawer/use.drawer';
 import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader';
 import { useLevel } from '@/req/use-levels';
-import { Layer, Stage, Image } from 'react-konva';
+import { Image, Layer, Stage } from 'react-konva';
 import useImage from 'use-image';
 import addEditClickableZoneDrawer from './edit.clickable-zone.drawer';
 import {

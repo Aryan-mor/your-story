@@ -73,7 +73,7 @@ export default [
         },
       ],
       'no-unused-vars': [
-        'error',
+        'warn',
         { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
       ],
       'react/self-closing-comp': 'error',

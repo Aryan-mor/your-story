@@ -27,7 +27,9 @@ export default function ItemContainerForm({
   const { t } = useTranslation();
   return (
     <div className={twMerge('flex w-full flex-wrap gap-2', classNames?.root)}>
-      <div className={twMerge('flex flex-col md:w-5/12', classNames?.labelRoot)}>
+      <div
+        className={twMerge('flex flex-col md:w-5/12', classNames?.labelRoot)}
+      >
         <h3 className="title-case text-base text-aos-co-primary">{label}</h3>
         {!isRequired && (
           <span className="text-sm text-gray-400">({t('Optional')})</span>
@@ -41,7 +43,8 @@ export default function ItemContainerForm({
               className="absolute -right-10 top-0 ml-1"
               isIconOnly
               size="sm"
-              variant="light">
+              variant="light"
+            >
               <X size={20} className="text-gray-700" />
             </Button>
           </DeleteWithAutoHandleActionModal>

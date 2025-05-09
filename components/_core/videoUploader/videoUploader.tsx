@@ -5,7 +5,6 @@ import VideoUploaderModal, {
   VideoUploaderModalProps,
 } from './videoUploader.modal';
 import Button from '../button/button';
-import { Upload } from 'lucide-react';
 
 export const videoPlaceholder = 'https://placehold.co/900x1600';
 

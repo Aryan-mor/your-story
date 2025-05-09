@@ -20,7 +20,8 @@ export default function Container({
           'px-aos-xl': spacingSize === 'xl',
         }),
         classNames?.base,
-      )}>
+      )}
+    >
       {children}
     </div>
   );

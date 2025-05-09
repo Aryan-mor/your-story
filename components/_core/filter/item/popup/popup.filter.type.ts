@@ -52,7 +52,9 @@ export const isPopupState = (state: FilterState): state is PopupState => {
   return state.type === FilterType.Popup;
 };
 
-export const isPopupFilter = <T>(filter: Filter<T>): filter is PopupFilter<T> => {
+export const isPopupFilter = <T>(
+  filter: Filter<T>,
+): filter is PopupFilter<T> => {
   return filter.type === FilterType.Popup;
 };
 
