@@ -2,7 +2,7 @@ import {
   DrawerFooter as NextUiDrawerFooter,
   type DrawerFooterProps as NextUiDrawerFooterProps,
 } from '@heroui/react';
-import { tw } from '../../../utils/tw.ts';
+import { tw } from '@/utils/tw';
 import {
   useModalFooterActions,
   type UseModalFooterActionsProps,

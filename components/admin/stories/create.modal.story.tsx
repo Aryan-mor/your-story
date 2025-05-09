@@ -29,7 +29,9 @@ export default function CreateStoryModal(props: CreateStoryModalProps) {
         {
           onSuccess: (story) => {
             props.onClose();
-            router.push('/panel/stories/edit/' + story.id);
+            router.push(
+              '/panel/stories/edit/' + (story as unknown as Story).id,
+            );
           },
           onSettled: onLoadingFinished,
         },

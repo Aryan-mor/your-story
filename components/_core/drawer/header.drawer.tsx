@@ -5,7 +5,7 @@ import {
 import { Pencil, X } from 'lucide-react';
 import { isString } from 'radash';
 import type { ReactNode } from 'react';
-import { tw } from '../../../utils/tw.ts';
+import { tw } from '@/utils/tw';
 import Button, { type ButtonProps } from '../button/button';
 import type { DrawerProps } from './drawer';
 

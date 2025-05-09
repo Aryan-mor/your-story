@@ -6,8 +6,7 @@ import {
   TriangleAlert,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
-import { flexCenterStartStyles } from '../../../styles/flex.ts';
-import { tw } from '../../../utils/tw.ts';
+import { tw } from '@/utils/tw';
 
 export enum Severity {
   Default,
@@ -84,7 +83,7 @@ export default function Information({
   const CheckedIcon = icon || severityIcon;
 
   return (
-    <span className={flexCenterStartStyles('text-sm text-gray-500')}>
+    <span className={tw('flex items-center text-sm text-gray-500')}>
       <CheckedIcon
         size={17}
         className={tw(

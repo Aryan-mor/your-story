@@ -1,6 +1,6 @@
 import { ButtonGroup, type ButtonGroupProps } from '@heroui/react';
-import { tw } from '../../../../utils/tw.ts';
 import Button, { type ButtonProps } from '../../button/button';
+import { tw } from '@/utils/tw';
 
 type ButtonGroupItem = { id: number | string } & Omit<ButtonProps, 'variant'>;
 type ButtonGroupSelectProps = {

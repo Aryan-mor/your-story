@@ -4,8 +4,8 @@ import { Search } from 'lucide-react';
 import { type Dispatch, type SetStateAction, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { twMerge } from 'tailwind-merge';
-import { tw } from '../../../utils/tw.ts';
-import { useOpen } from '../../../utils/use-open';
+import { tw } from '@/utils/tw';
+import { useOpen } from '@/utils/use-open';
 import SearchInput, {
   SearchClearIcon,
   searchIconClassName,

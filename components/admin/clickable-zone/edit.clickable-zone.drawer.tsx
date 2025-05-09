@@ -1,5 +1,4 @@
 import Drawer, { DrawerProps } from '@/components/_core/drawer/drawer';
-import LazyDrawer from '@/components/_core/drawer/lazy.drawer';
 import {
   useClickableZone,
   useUpdateClickableZone,
@@ -125,4 +124,4 @@ function EditClicableZone({
   );
 }
 
-export default LazyDrawer(EditClicableZone);
+export default EditClicableZone;

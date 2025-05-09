@@ -4,9 +4,9 @@ import { unique } from 'radash';
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { storyId: Story['id'] } },
+  { params }: { params: Promise<{ storyId: Story['id'] }> },
 ) {
-  const { storyId } = params;
+  const { storyId } = await params;
   try {
     const data = (await Database.readData(DataType.Stories)) as Story[];
     const story = data.find((story) => story.id === storyId);
@@ -24,11 +24,11 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { storyId: Story['id'] } },
+  { params }: { params: Promise<{ storyId: Story['id'] }> },
 ) {
   const level: Level = await req.json();
 
-  const { storyId } = params;
+  const { storyId } = await params;
 
   try {
     const stories: Story[] | null = await Database.readData(DataType.Stories);

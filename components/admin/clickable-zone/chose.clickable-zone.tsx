@@ -120,13 +120,13 @@ export default function ChoseClickableZone({
         )}
         <div className="flex">
           <Button
-            onPress={() =>
+            onPress={() => {
               handleOpenAddEditOptionDrawer({
                 storyId,
                 levelId,
                 clickableZoneId: primaryClickableZone?.id,
-              })
-            }
+              });
+            }}
           >
             Add option
           </Button>

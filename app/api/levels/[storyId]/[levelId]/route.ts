@@ -3,9 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { storyId: Story['id']; levelId: Level['id'] } },
+  {
+    params,
+  }: { params: Promise<{ storyId: Story['id']; levelId: Level['id'] }> },
 ) {
-  const { storyId, levelId } = params;
+  const { storyId, levelId } = await params;
 
   try {
     const stories: Story[] | null = await Database.readData(DataType.Stories);

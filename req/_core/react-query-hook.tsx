@@ -28,7 +28,7 @@ const useObjectify = <
   params?: HOOK_PARAMS,
   options?: HOOK_OPTIONS,
 ) => {
-  const { data: baseData, isLoading, isFetching } = useHook(params, options);
+  const { data: baseData, isLoading } = useHook(params, options);
   const data = useMemo(() => {
     if (!baseData) return undefined;
     return CObject.objectifyWithId(baseData);
@@ -37,9 +37,8 @@ const useObjectify = <
     () => ({
       data,
       isLoading,
-      isFetching,
     }),
-    [data, isLoading, isFetching],
+    [data, isLoading],
   );
 };
 
@@ -71,15 +70,11 @@ const getOneFromHook = <
     params: HOOK_PARAMS & { id: null | undefined | ID },
     options?: HOOK_OPTIONS,
   ) => {
-    const {
-      data: baseData,
-      isLoading,
-      isFetching,
-    } = useObjectify<HOOK_PARAMS, HOOK_OPTIONS, RESULT_ITEM>(
-      useHook,
-      params,
-      options,
-    );
+    const { data: baseData, isLoading } = useObjectify<
+      HOOK_PARAMS,
+      HOOK_OPTIONS,
+      RESULT_ITEM
+    >(useHook, params, options);
     const data = useMemo<RESULT_ITEM | undefined>(
       () => (params.id ? baseData?.[params.id] : undefined),
       [baseData, params.id],
@@ -89,9 +84,8 @@ const getOneFromHook = <
       () => ({
         data,
         isLoading,
-        isFetching,
       }),
-      [data, isLoading, isFetching],
+      [data, isLoading],
     );
   };
 };

@@ -17,7 +17,6 @@ import { useStory } from '@/req/use-stories';
 import { SelectItem } from '@heroui/react';
 import VideoUploader from '@/components/_core/videoUploader/videoUploader';
 import { pick } from 'radash';
-import LazyDrawer from '@/components/_core/drawer/lazy.drawer';
 
 type AddEditOptionProps = {
   storyId: undefined | Story['id'];
@@ -199,4 +198,4 @@ function AddEditOptionDrawer({
   );
 }
 
-export default LazyDrawer(AddEditOptionDrawer);
+export default AddEditOptionDrawer;

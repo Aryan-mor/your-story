@@ -5,7 +5,7 @@ import {
   type BadgeProps,
 } from '@heroui/react';
 import clsx from 'clsx';
-import { tw } from '../../../utils/tw';
+import { tw } from '@/utils/tw';
 
 type AvatarExtraSize = 'xs' | 'xl' | '2xl' | '3xl';
 

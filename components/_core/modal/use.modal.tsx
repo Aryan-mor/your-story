@@ -1,6 +1,6 @@
 import { type FC, useCallback, useState } from 'react';
-import type { HardPartial } from '../../../interfaces/core/hard-partial.ts';
 import type { ModalProps } from './modal';
+import { HardPartial } from '@/utils/hard-partial';
 
 export default function useModal<T extends ModalProps>(Modal: FC<T>) {
   const [state, setState] = useState<Omit<

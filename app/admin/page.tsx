@@ -25,7 +25,7 @@ export default function PanelPage() {
         <Button
           color="primary"
           startContent={<PlusIcon />}
-          onPress={handleOpenCreateStoryModal}
+          onPress={() => handleOpenCreateStoryModal({})}
         >
           Add new Story
         </Button>

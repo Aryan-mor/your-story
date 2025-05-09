@@ -1,6 +1,6 @@
 import { Divider, DrawerContent, ModalBody } from '@heroui/react';
 import { Fragment, type ReactNode } from 'react';
-import { tw } from '../../../utils/tw.ts';
+import { tw } from '@/utils/tw';
 import BaseDrawer, { type BaseDrawerProps } from './base.drawer';
 import DrawerFooter, { type DrawerFooterProps } from './footer.drawer';
 import DrawerHeader, { type DrawerHeaderProps } from './header.drawer';
