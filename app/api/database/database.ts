@@ -6,16 +6,9 @@ export enum DataType {
   Levels = 'Levels',
 }
 
-// const DataPaths: Record<DataType, string> = {
-//   [DataType.Stories]: 'app/api/database/stories.json',
-//   [DataType.Levels]: 'app/api/database/levels.json',
-// };
-
 const DataPaths: Record<DataType, string> = {
-  [DataType.Stories]:
-    'https://raw.githubusercontent.com/Aryan-mor/db/refs/heads/main/stories.json',
-  [DataType.Levels]:
-    'https://raw.githubusercontent.com/Aryan-mor/db/refs/heads/main/levels.json',
+  [DataType.Stories]: 'app/api/database/stories.json',
+  [DataType.Levels]: 'app/api/database/levels.json',
 };
 
 export default class Database {
@@ -633,7 +626,7 @@ export const LevelsDb = [
           },
           {
             text: 'درمورد آینده خودشون و اینکه زندگی خوبی کنار هم میسازن',
-            nextLevelId: 'ma6wc4hn8v42se5g9gm',
+            nextLevelId: 'mahcfadqvsgbh9q40r',
             transitionAnimation: {
               asset_id: '3a5080dde4d1d5855bc9e05818cc6b0b',
               public_id: 'm9vebd5k2ts1uk0uld/bxypogjo0a2y0zc43ejd',
@@ -755,7 +748,7 @@ export const LevelsDb = [
   },
   {
     id: 'magy7f3p1vrdy8xw05o',
-    title: 'حس واقعی عاطفه توی این لحظه چیه؟',
+    title: 'روز خواستگاری: حس واقعی عاطفه توی این لحظه چیه؟',
     clickableZones: [
       {
         x: 46.33333333333333,
@@ -1407,6 +1400,84 @@ export const LevelsDb = [
       },
     ],
     image: null,
+  },
+  {
+    id: 'mahcfadqvsgbh9q40r',
+    title:
+      'خبر بد یا خوب نمیدونم. ولی آرین باید مهاجرت کنه! این باعث جدایی آرین و عاطفه میشه به نظرتون تو روز شب آخر بهم چی میگن؟',
+    clickableZones: [
+      {
+        x: 5,
+        y: 5,
+        radius: 50,
+        options: [
+          {
+            text: 'آنها بهم قول میدهند قوی باشند و تلاش کنند تا در اولین شرایط خوب بهم برسن',
+            nextLevelId: 'ma6wc4hn8v42se5g9gm',
+            transitionAnimation: {
+              asset_id: 'eee74a8f99da1831bc0ebe708e8e20f8',
+              public_id: 'mahcfadqvsgbh9q40r/pytx6xvoqt41fcp07f32',
+              format: 'mp4',
+              version: 1746828334,
+              resource_type: 'video',
+              type: 'upload',
+              created_at: '2025-05-09T22:05:34Z',
+              bytes: 1078913,
+              width: 720,
+              height: 1280,
+              asset_folder: 'mahcfadqvsgbh9q40r',
+              display_name: 'pytx6xvoqt41fcp07f32',
+              url: 'http://res.cloudinary.com/ddmb02zpn/video/upload/v1746828334/mahcfadqvsgbh9q40r/pytx6xvoqt41fcp07f32.mp4',
+              secure_url:
+                'https://res.cloudinary.com/ddmb02zpn/video/upload/v1746828334/mahcfadqvsgbh9q40r/pytx6xvoqt41fcp07f32.mp4',
+            },
+            id: 'mahci2lxlezd9rwswo',
+          },
+          {
+            text: 'ناراحت باشن و بگن کسی از آینده خبری نداره شاید راهشون جدا باشه ',
+            nextLevelId: 'mahcfadqvsgbh9q40r',
+            levelType: 'Failed',
+            transitionAnimation: {
+              asset_id: '23309fe07e5621f1f851d0075f36822d',
+              public_id: 'mahcfadqvsgbh9q40r/tpolfejw82xcweibwuuz',
+              format: 'mp4',
+              version: 1746828325,
+              resource_type: 'video',
+              type: 'upload',
+              created_at: '2025-05-09T22:05:25Z',
+              bytes: 702989,
+              width: 720,
+              height: 1280,
+              asset_folder: 'mahcfadqvsgbh9q40r',
+              display_name: 'tpolfejw82xcweibwuuz',
+              url: 'http://res.cloudinary.com/ddmb02zpn/video/upload/v1746828325/mahcfadqvsgbh9q40r/tpolfejw82xcweibwuuz.mp4',
+              secure_url:
+                'https://res.cloudinary.com/ddmb02zpn/video/upload/v1746828325/mahcfadqvsgbh9q40r/tpolfejw82xcweibwuuz.mp4',
+            },
+            id: 'mahchtgut6812xvkhp9',
+          },
+        ],
+        note: '',
+        id: 'mahcgb4fsz0qchj192',
+      },
+    ],
+    image: {
+      asset_id: '4ddbde75dfd417cb5db4b8b3d41684bd',
+      public_id: 'm9vbbcbtdfnk7zb006e/i5hwt27smn05q0hhzajc',
+      format: 'webp',
+      version: 1746828262,
+      resource_type: 'image',
+      type: 'upload',
+      created_at: '2025-05-09T22:04:22Z',
+      bytes: 36288,
+      width: 720,
+      height: 1280,
+      asset_folder: 'm9vbbcbtdfnk7zb006e',
+      display_name: 'i5hwt27smn05q0hhzajc',
+      url: 'http://res.cloudinary.com/ddmb02zpn/image/upload/v1746828262/m9vbbcbtdfnk7zb006e/i5hwt27smn05q0hhzajc.webp',
+      secure_url:
+        'https://res.cloudinary.com/ddmb02zpn/image/upload/v1746828262/m9vbbcbtdfnk7zb006e/i5hwt27smn05q0hhzajc.webp',
+    },
   },
 ];
 
