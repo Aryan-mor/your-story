@@ -1,4 +1,5 @@
 import Uuid from '@/types/_core/uuid';
+
 /**
  * This class extends the built-in `Object` class and provides additional static methods for manipulating objects.
  */
