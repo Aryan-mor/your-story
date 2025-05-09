@@ -43,6 +43,15 @@ export default class CArray extends Array {
     });
   }
 
+  static shuffle<ITEM>(array: ITEM[]) {
+    const arr = [...array]; // Create a shallow copy to avoid mutating the original array
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Pick a random index
+      [arr[i], arr[j]] = [arr[j], arr[i]]; // Swap elements
+    }
+    return arr;
+  }
+
   /**
    * Returns a new array that is the concatenation of multiple arrays, ignoring any `undefined` arrays.
    *

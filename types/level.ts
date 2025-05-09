@@ -8,12 +8,12 @@ type Level = {
   id: LevelId;
   title: string;
   image: null | Image;
-  clickableZone: ClickableZone[];
+  clickableZones: ClickableZone[];
 };
 export default Level;
 
 export const defaultLevel: Partial<Level> = {
   title: '',
-  clickableZone: [],
+  clickableZones: [],
   image: null,
 };

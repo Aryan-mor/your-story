@@ -1,23 +1,21 @@
 import Input from '@/components/_core/_form/input/input';
 import Drawer, { DrawerProps } from '@/components/_core/drawer/drawer';
-import { useClickableZone } from '@/req/use-clickable-zone';
 import useLoading from '@/utils/use-loading';
 import { Fragment, useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import ClickableZoneOption from '../../../.history/types/clickableZone/option.clickableZone_20250223112034';
-import { defaultClickableZoneOption } from '@/types/clickableZone/option.clickableZone';
+import ClickableZoneOption, {
+  ClickableZoneOptionLevelType,
+  defaultClickableZoneOption,
+} from '@/types/clickableZone/option.clickableZone';
 import {
   useClicableZoneOption,
   useUpdateClickableZoneOption,
 } from '@/req/use-clickable-zone-option';
 import Select from '@/components/_core/_form/select/select';
-import { useLevel, useObjectifyLevels } from '@/req/use-levels';
+import { useObjectifyLevels } from '@/req/use-levels';
 import { useStory } from '@/req/use-stories';
 import { SelectItem } from '@heroui/react';
-import ImageUploader from '@/components/_core/imageUploader/ImageUploader';
-import VideoUploader, {
-  Video,
-} from '@/components/_core/videoUploader/videoUploader';
+import VideoUploader from '@/components/_core/videoUploader/videoUploader';
 import { pick } from 'radash';
 import LazyDrawer from '@/components/_core/drawer/lazy.drawer';
 
@@ -31,7 +29,7 @@ type AddEditOptionProps = {
 type FormData = {
   clickableZoneOption: Pick<
     ClickableZoneOption,
-    'text' | 'nextLevelId' | 'transitionAnimation'
+    'text' | 'nextLevelId' | 'transitionAnimation' | 'levelType'
   >;
 };
 
@@ -78,7 +76,7 @@ function AddEditOptionDrawer({
           ...defaultClickableZoneOption,
           ...(clickableZoneOptionBase ?? {}),
         },
-        ['id', 'text', 'nextLevelId', 'transitionAnimation'],
+        ['id', 'text', 'nextLevelId', 'levelType', 'transitionAnimation'],
       ),
     });
   }, [clickableZoneId, clickableZoneOptionBase, clickableZoneOptionId, reset]);
@@ -87,10 +85,12 @@ function AddEditOptionDrawer({
     (form: FormData) => {
       onLoadingStart();
       updateClickableZoneOption({
+        levelType: form.clickableZoneOption?.levelType ?? undefined,
         nextLevelId: form.clickableZoneOption?.nextLevelId ?? undefined,
         text: form.clickableZoneOption?.text ?? undefined,
         transitionAnimation:
           form.clickableZoneOption?.transitionAnimation ?? undefined,
+        id: clickableZoneOptionId,
       })
         ?.then(() => {
           props.onClose();
@@ -99,7 +99,13 @@ function AddEditOptionDrawer({
           onLoadingFinished();
         });
     },
-    [onLoadingFinished, onLoadingStart, props, updateClickableZoneOption],
+    [
+      clickableZoneOptionId,
+      onLoadingFinished,
+      onLoadingStart,
+      props,
+      updateClickableZoneOption,
+    ],
   );
 
   return (
@@ -146,6 +152,32 @@ function AddEditOptionDrawer({
             {(story?.levels ?? []).map((levelId) => (
               <SelectItem key={levelId} value={levelId}>
                 {levels?.[levelId]?.title}
+              </SelectItem>
+            ))}
+          </Select>
+          <Select
+            label="Select level type"
+            isDisabled={isLoading}
+            multiple={false}
+            selectedKeys={
+              clickableZoneOption.levelType
+                ? [clickableZoneOption.levelType]
+                : []
+            }
+            onChange={(e) => {
+              if (!e.target.value) return;
+              return setValue(
+                'clickableZoneOption.levelType',
+                e.target.value as ClickableZoneOption['levelType'],
+              );
+            }}
+          >
+            {[
+              { value: ClickableZoneOptionLevelType.Failed, label: 'Failed' },
+              { value: ClickableZoneOptionLevelType.Success, label: 'Success' },
+            ].map(({ value, label }) => (
+              <SelectItem key={value} value={value}>
+                {label}
               </SelectItem>
             ))}
           </Select>

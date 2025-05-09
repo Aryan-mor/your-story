@@ -1,11 +1,12 @@
 'use client';
 import { useParams as useNextParams } from 'next/navigation';
 
-type Params = {
-  storyId: Story['id'] | undefined;
-};
+type Params = Partial<{
+  storyId: Story['id'];
+  levelId: Level['id'];
+  zoneId: ClickableZone['id'];
+}>;
 
 export default function useParams() {
-  const params = useNextParams();
-  return params as Params;
+  return useNextParams<Params>();
 }

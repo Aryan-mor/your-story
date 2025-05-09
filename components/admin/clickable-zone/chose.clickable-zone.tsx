@@ -1,6 +1,6 @@
 'use client';
 
-import { Stage, Layer, Image } from 'react-konva';
+import { Image, Layer, Stage } from 'react-konva';
 import useImage from 'use-image';
 import { imagePlaceholder } from '@/components/_core/imageUploader/ImageUploader';
 import Circle from '@/components/_core/konva/circle';
@@ -64,7 +64,7 @@ export default function ChoseClickableZone({
         >
           <Layer>
             <Image width={displayWidth} height={displayHeight} image={image} />
-            {level?.clickableZone?.map((clz) => {
+            {level?.clickableZones?.map((clz) => {
               const isPrimaryZone = clz.id === primaryClickableZone?.id;
               const clickableZone = isPrimaryZone ? primaryClickableZone : clz;
               return (

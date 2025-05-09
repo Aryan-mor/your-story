@@ -58,8 +58,9 @@ export default function PreviewClickableZoneOption({
           <DeleteWithAutoHandleActionModal
             primaryAction={{
               onPress: () => {
+                if (!clickableZoneOption?.id) return;
                 onLoadingStart();
-                removeClickableZoneOption(clickableZoneOption?.id)?.finally(
+                removeClickableZoneOption(clickableZoneOption.id)?.finally(
                   onLoadingFinished,
                 );
               },
@@ -75,6 +76,12 @@ export default function PreviewClickableZoneOption({
         <span>
           <span className="text-gray-500 text-sm">Next level:</span>{' '}
           {nextLevel?.title}
+        </span>
+      )}
+      {clickableZoneOption?.levelType && (
+        <span>
+          <span className="text-gray-500 text-sm">Level type:</span>{' '}
+          {clickableZoneOption?.levelType}
         </span>
       )}
       {renderAddEditOptionDrawer}

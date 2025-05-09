@@ -5,7 +5,6 @@ import { useLevel, useUpdateLevel } from '@/req/use-levels';
 import useLoading from '@/utils/use-loading';
 import { useCallback, useEffect, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import ClickableZone from '../../../types/clickableZone/clickableZone';
 import ClickableZonePreview from '../clickable-zone/preview.clickable-zone';
 import Button from '@/components/_core/button/button';
 import { Plus } from 'lucide-react';
@@ -13,7 +12,7 @@ import CArray from '@/utils/cArray';
 import useDrawer from '@/components/_core/drawer/use.drawer';
 import EditClicableZone from '../clickable-zone/edit.clickable-zone.drawer';
 import MultiClickableZonePreview from '../clickable-zone/multi-preview.clickable-zone';
-import { omit, pick } from 'radash';
+import { pick } from 'radash';
 import { useUpdateClickableZone } from '@/req/use-clickable-zone';
 import { defaultClickableZone } from '@/types/clickableZone/clickableZone';
 
@@ -102,18 +101,18 @@ export default function UpdateLevelDrawer({
       />
       <div className="flex flex-col gap-[inherit]">
         <span className="text-lg font-samibold">Clicable zone</span>
-        {CArray.isEmpty(level?.clickableZone) && (
+        {CArray.isEmpty(level?.clickableZones) && (
           <span className="text-gray-600 text-sm">
             No clickable zone in this level
           </span>
         )}
 
-        {CArray.isNotEmpty(level?.clickableZone) && (
+        {CArray.isNotEmpty(level?.clickableZones) && (
           <div className="grid grid-cols-2 gap-3">
             <div className="flex gap-3 justify-between border rounded-lg p-2">
               <div className="flex flex-col w-full">
                 <span className="pb-2">All clickable zone</span>
-                <span>Clickable zone: {level?.clickableZone?.length}</span>
+                <span>Clickable zone: {level?.clickableZones?.length}</span>
               </div>
               <MultiClickableZonePreview
                 levelId={levelId}
@@ -127,7 +126,7 @@ export default function UpdateLevelDrawer({
                 }
               />
             </div>
-            {level?.clickableZone.map((clickableZone) => (
+            {level?.clickableZones.map((clickableZone) => (
               <ClickableZonePreview
                 key={clickableZone.id}
                 levelId={levelId}

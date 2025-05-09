@@ -17,11 +17,16 @@ import Textarea from '@/components/_core/_form/textarea/textarea';
 import { pick } from 'radash';
 import VideoUploader from '@/components/_core/videoUploader/videoUploader';
 import Select from '@/components/_core/_form/select/select';
-import { useLevels, useObjectifyLevels } from '@/req/use-levels';
+import { useObjectifyLevels } from '@/req/use-levels';
 
 type FormData = Pick<
   Story,
-  'title' | 'description' | 'startLevelId' | 'thumbnail' | 'introAnimation'
+  | 'title'
+  | 'description'
+  | 'startLevelId'
+  | 'thumbnail'
+  | 'introAnimation'
+  | 'outroImage'
 >;
 export default function UploadForm() {
   const router = useRouter();
@@ -43,6 +48,7 @@ export default function UploadForm() {
   } = useModal(CreateLevelModal);
 
   const thumbnail = watch('thumbnail');
+  const outroImage = watch('outroImage');
   const introAnimation = watch('introAnimation');
   const startLevelId = watch('startLevelId');
   useEffect(() => {
@@ -56,6 +62,7 @@ export default function UploadForm() {
         'startLevelId',
         'thumbnail',
         'introAnimation',
+        'outroImage',
       ]),
     );
   }, [reset, story]);
@@ -117,7 +124,7 @@ export default function UploadForm() {
           onImageChange={(image) => setValue('thumbnail', image)}
         />
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center gap-4">
         <VideoUploader
           scope={storyId}
           label="Intro animation"
@@ -127,6 +134,16 @@ export default function UploadForm() {
             wrapper: 'w-[150px]',
           }}
           onVideoChange={(video) => setValue('introAnimation', video)}
+        />
+        <ImageUploader
+          scope={storyId}
+          label="Outro Image"
+          isDisabled={isLoading}
+          image={outroImage}
+          classNames={{
+            wrapper: 'w-[150px]',
+          }}
+          onImageChange={(image) => setValue('outroImage', image)}
         />
       </div>
       <div className="grid grid-cols-2 col-span-3 pt-5 gap-4">

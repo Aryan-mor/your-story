@@ -16,8 +16,8 @@ const useClickableZoneQuery = (
   });
 
   const data = useMemo(() => {
-    return level?.clickableZone;
-  }, [level?.clickableZone]);
+    return level?.clickableZones;
+  }, [level?.clickableZones]);
 
   return useMemo(() => ({ data, isLoading }), [data, isLoading]);
 };
@@ -41,13 +41,13 @@ export const useUpdateClickableZone = (params: {
         id: clickableZone?.id ?? (newUuid() as ClickableZone['id']),
       };
       const newClickableZone = CArray.safeOverrideItem(
-        level.clickableZone,
+        level.clickableZones,
         newClickableZonesItem,
       );
 
       const newLevel: Level = {
         ...level,
-        clickableZone: newClickableZone,
+        clickableZones: newClickableZone,
       };
       return updateLevel.mutateAsync(newLevel).then((res) => ({
         data: {
@@ -73,7 +73,7 @@ export const useRemoveClickableZone = (params: {
   return useCallback(
     (clickableZoneId: ClickableZone['id']) => {
       if (!level) return;
-      const newClickableZone = level.clickableZone.filter(
+      const newClickableZone = level.clickableZones.filter(
         (cz) => cz.id !== clickableZoneId,
       );
 

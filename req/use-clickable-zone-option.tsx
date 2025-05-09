@@ -1,12 +1,11 @@
 import ReactQueryHook from './_core/react-query-hook';
 import { useCallback, useMemo } from 'react';
 import { useLevel, useUpdateLevel } from './use-levels';
-import ClickableZone from '../.history/types/clickableZone/clickableZone_20250222223138';
 import CArray from '@/utils/cArray';
 import { newUuid } from '@/types/_core/uuid';
 import { useClickableZone } from './use-clickable-zone';
-import ClickableZoneOption from '../.history/types/clickableZone/option.clickableZone_20250223112019';
 import { defaultClickableZoneOption } from '@/types/clickableZone/option.clickableZone';
+import ClickableZone from '@/types/clickableZone/clickableZone';
 
 const useClickableZoneOptionQuery = (
   params:
@@ -49,18 +48,24 @@ export const useUpdateClickableZoneOption = (params: {
   return useCallback(
     (clickableZoneOption: Partial<ClickableZoneOption>) => {
       if (!level || !params?.clickableZoneId || !clickableZone) return;
-      const newClickableZone = CArray.safeOverrideItem(level.clickableZone, {
-        ...clickableZone,
-        options: CArray.safeOverrideItem(clickableZone.options, {
+      const newClickableZoneOptions: ClickableZoneOption[] =
+        CArray.safeOverrideItem(clickableZone.options, {
           ...defaultClickableZoneOption,
           ...clickableZoneOption,
-          id: clickableZoneOption.id ?? newUuid(),
-        }),
-      });
+          id: clickableZoneOption.id ?? newUuid<ClickableZoneOption['id']>(),
+        });
 
-      const newLevel = {
+      const newClickableZones: ClickableZone[] = CArray.safeOverrideItem(
+        level.clickableZones,
+        {
+          ...clickableZone,
+          options: newClickableZoneOptions,
+        },
+      );
+
+      const newLevel: Level = {
         ...level,
-        clickableZone: newClickableZone,
+        clickableZones: newClickableZones,
       };
       return updateLevel.mutateAsync(newLevel);
     },
@@ -87,7 +92,7 @@ export const useRemoveClickableZoneOption = (params: {
   return useCallback(
     (clickableZoneOptionId: ClickableZoneOption['id']) => {
       if (!level || !params?.clickableZoneId || !clickableZone) return;
-      const newClickableZone = CArray.safeOverrideItem(level.clickableZone, {
+      const newClickableZone = CArray.safeOverrideItem(level.clickableZones, {
         ...clickableZone,
         options: clickableZone.options?.filter(
           (o) => o.id !== clickableZoneOptionId,

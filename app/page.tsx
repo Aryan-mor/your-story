@@ -7,7 +7,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/admin');
+    // router.push('/admin');
+    router.push('/game/stories/play/m9vbbcbtdfnk7zb006e');
   }, [router]);
 
   return (
