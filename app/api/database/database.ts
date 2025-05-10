@@ -1580,6 +1580,7 @@ export const StoriesDb = [
       'magzg7s8pgbp55muz7f',
       'magzm84hv6gtvosmwz',
       'mah6fajwuqvp72t3o39',
+      'mahcfadqvsgbh9q40r',
     ],
     outroImage: {
       asset_id: '26ff127b8b835716b8f155e535f4a0ac',

@@ -17,6 +17,7 @@ export default function Video({ video, ...props }: VideoProps) {
         loop={false}
         width="100%"
         height="100%"
+        playsinline={true}
         {...props}
       />
     </Suspense>

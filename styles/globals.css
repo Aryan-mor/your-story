@@ -4,3 +4,5 @@
 * {
     font-family: yekan, sans-serif;
 }
+
+video { object-fit: cover}

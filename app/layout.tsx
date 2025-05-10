@@ -36,12 +36,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body
         className={clsx(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen h-screen bg-background font-sans antialiased [&>div]:h-full',
           fontSans.variable,
         )}
       >
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'light' }}>
-          <div className="relative flex flex-col h-screen">{children}</div>
+          <div className="relative flex flex-col h-full">{children}</div>
         </Providers>
       </body>
     </html>

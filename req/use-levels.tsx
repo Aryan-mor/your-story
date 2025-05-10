@@ -12,8 +12,12 @@ const useLevelsQuery = (
     queryKey: [LevelsKey, params?.storyId],
     queryFn: () => {
       return fetch(`/api/levels/${params?.storyId}`)
-        .then((res) => res.json())
-        .then((data) => (data ?? []) as Level[]);
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          return (data ?? []) as Level[];
+        });
     },
     enabled: !!params?.storyId,
   });

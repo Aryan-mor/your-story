@@ -11,7 +11,6 @@ export default function PlayLevel() {
   const { data: level } = useLevel({ storyId: storyId, id: levelId });
   const { isOpen: isLoaded, onOpen: onLoaded } = useOpen();
   const router = useRouter();
-
   useEffect(() => {
     if (
       (isLoaded || (level && !level.image)) &&
